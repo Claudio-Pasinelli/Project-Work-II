@@ -24,7 +24,7 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="w-full h-36 min-h-36 flex justify-between items-center bg-yellow-100 py-6 px-8">
+    <nav className="w-full h-36 min-h-36 flex justify-between items-center bg-yellow-100 py-6 px-8 shadow-xl">
       <h1 className="text-white font-bold">{pageName}</h1>
       {/* cerca */}
 
