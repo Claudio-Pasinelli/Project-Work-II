@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../../../utils/helpers/tailwindMerge';
-import { getEmailCookies, removeEmailCookies } from '../../../utils';
+import { ROUTES, getEmailCookies, removeEmailCookies } from '../../../utils';
 import { useEffect, useState } from 'react';
+import Avatar from '../Avatar';
 
 const Navbar = () => {
   const location = useLocation();
@@ -10,13 +11,13 @@ const Navbar = () => {
   const [pageName, setPageName] = useState('');
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '') {
+    if (location.pathname === ROUTES.home || location.pathname === '') {
       setPageName('HOME');
-    } else if (location.pathname === '/contacts') {
+    } else if (location.pathname === ROUTES.contacts) {
       setPageName('CONTATTACI');
-    } else if (location.pathname === '/profile') {
+    } else if (location.pathname === ROUTES.profile) {
       setPageName('PROFILO');
-    } else if (location.pathname === '/myRecipes') {
+    } else if (location.pathname === ROUTES.myRecipes) {
       setPageName('LE MIE RICETTE');
     } else {
       setPageName('');
@@ -53,15 +54,7 @@ const Navbar = () => {
             Contattaci
           </Link>
         ) : null}
-        {email ? (
-          <Link to="/login" className="text-black" onClick={removeEmailCookies}>
-            Logout
-          </Link>
-        ) : (
-          <Link to="/login" className="text-black-50">
-            Accedi
-          </Link>
-        )}
+        <Avatar email={email} />
       </section>
     </nav>
   );

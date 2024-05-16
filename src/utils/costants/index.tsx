@@ -7,3 +7,5 @@ export const ROUTES = {
   profile: '/profile',
   myRecipes: '/myRecipes',
 };
+
+export const RESEND_API_KEY = 're_YJf373dW_MpknFi27ddnCEKAM27iS4JNM';

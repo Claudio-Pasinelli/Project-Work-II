@@ -42,6 +42,7 @@ module.exports = {
       },
       orange: '#FFB800',
       lightblue: '#3ADBFF',
+      green: '#00E408',
     },
     extend: {},
   },

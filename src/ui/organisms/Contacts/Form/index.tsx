@@ -2,11 +2,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, Textarea } from '../../../atoms';
 import schema from '../validation';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import { Message, ROUTES } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
 
 const defaultValues = {
+  name: '',
   email: '',
   message: '',
 };
@@ -27,10 +28,8 @@ const Form = () => {
 
   const navigate = useNavigate();
 
-  const handleClickAccess = async () => {
+  const handleSendEmail = async () => {
     const hasErrors = await trigger();
-
-    Cookies.set('email', getValues('email'));
 
     if (!hasErrors) {
       // console.log({errors.});
@@ -54,6 +53,14 @@ const Form = () => {
         </h1>
         <article className="w-3/4 flex flex-col my-5 p-4 items-center bg-gray-50 rounded-3xl shadow-xl sm:m-7 sm:w-fit sm:p-8">
           <section className="w-full">
+            <Input
+              label="Nome"
+              labelColor="text-black"
+              name="name"
+              type="text"
+              placeholder="Inserisci Il tuo nome"
+              error={errors?.name?.message}
+            />
             <Input
               label="Email"
               labelColor="text-black"
@@ -83,7 +90,8 @@ const Form = () => {
               title="Conferma"
               backgroundColor="bg-yellow-100 hover:bg-yellow-50"
               iconName="rightArrow"
-              onClick={handleClickAccess}
+              name="_action"
+              onClick={handleSendEmail}
             />
           </section>
         </article>

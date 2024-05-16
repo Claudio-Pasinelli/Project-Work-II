@@ -10,6 +10,7 @@ import {
   Close,
   Delete,
   Edit,
+  Login,
   Logout,
   New,
   Reset,
@@ -28,6 +29,7 @@ type ReactIconsName =
   | 'new'
   | 'edit'
   | 'delete'
+  | 'login'
   | 'logout'
   | 'close'
   // | 'dropDown'
@@ -75,6 +77,7 @@ const IconSvg = ({
     new: <New className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     edit: <Edit className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     delete: <Delete className={iconStyle} size={size} aria-hidden="true" />,
+    login: <Login className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     logout: <Logout className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     close: <Close className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     avatar: <Avatar className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,

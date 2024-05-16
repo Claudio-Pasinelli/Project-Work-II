@@ -15,6 +15,27 @@ export interface User {
 }
 
 export interface Message {
+  name: string;
   email: string;
   message: string;
 }
+
+export type IErrorFullContacts = {
+  email: string | null;
+  message: string | null;
+};
+
+export type IError = {
+  name: string | null;
+  email: string | null;
+  message: string | null;
+  termsOfService: string | null;
+};
+
+// export type ReturnContacts = TypedResponse<{
+//   success: boolean;
+//   errorsContacts?: IErrorFullContacts;
+//   errors?: IError;
+//   resendError?: ErrorResponse;
+//   data?: unknown;
+// }>;
