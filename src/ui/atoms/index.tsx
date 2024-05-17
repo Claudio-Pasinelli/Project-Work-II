@@ -6,3 +6,4 @@ export { default as Footer } from './Footer';
 export { default as IconSVG } from './IconSVG';
 export { default as Button } from './Button';
 export { default as A } from './A';
+export { default as SearchInput } from './SearchInput';

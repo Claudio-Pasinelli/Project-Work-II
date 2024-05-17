@@ -6,6 +6,7 @@ export const ROUTES = {
   contacts: '/contacts',
   profile: '/profile',
   myRecipes: '/myRecipes',
+  settings: '/settings',
 };
 
 export const RESEND_API_KEY = 're_YJf373dW_MpknFi27ddnCEKAM27iS4JNM';

@@ -6,9 +6,10 @@ import {
   LoginPage,
   SignInPage,
   PasswordRecoveryPage,
-  RequireAuth,
+  // RequireAuth,
   ContactsPage,
 } from '../ui';
+import SettingsPage from '../ui/pages/Settings';
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
           {/* <Route element={<RequireAuth />}> */}
           <Route path={ROUTES.home} element={<HomePage />} />
           <Route path={ROUTES.contacts} element={<ContactsPage />} />
+          <Route path={ROUTES.settings} element={<SettingsPage />} />
           {/* </Route> */}
         </Route>
         <Route path={ROUTES.login} element={<LoginPage />} />

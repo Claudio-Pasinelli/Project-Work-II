@@ -24,7 +24,7 @@ module.exports = {
       s: '0.925rem',
       xs: '0.875rem',
       xxs: '0.675rem',
-      '6xl': '3.75rem',
+      '4xl': '2.441rem',
     },
     colors:{
       black: '#000000',

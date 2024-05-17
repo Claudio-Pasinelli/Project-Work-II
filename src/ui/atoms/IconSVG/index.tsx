@@ -44,7 +44,7 @@ interface Props {
   iconColor?: string;
   activeColor?: string;
   hoverColor?: string;
-  className?: string;
+  iconClassName?: string;
 }
 
 const IconSvg = ({
@@ -54,13 +54,13 @@ const IconSvg = ({
   iconColor,
   activeColor = 'white',
   hoverColor = 'white',
-  className,
+  iconClassName,
 }: Props): ReactElement => {
   const iconStyle = cn(
     current && !iconColor
       ? `text-${activeColor}-00`
       : `text-${iconColor}-300 group-hover:text-${hoverColor}-50`,
-    className,
+    iconClassName,
   );
 
   const Icons = {

@@ -29,7 +29,7 @@ export default function Input({
       <input
         id={name}
         className={cn(
-          'h-9 border-y-2 border-x-8 border-solid border-yellow-100 hover:border-yellow-50 focus:border-indigo active:border-yellow-50 rounded-3xl p-2 text-center placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent md:p-4',
+          'h-10 border-y-2 border-x-8 border-solid border-yellow-100 hover:border-yellow-50 focus:border-indigo active:border-yellow-50 rounded-3xl p-2 text-center placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent',
         )}
         {...register(name)}
         {...rest}

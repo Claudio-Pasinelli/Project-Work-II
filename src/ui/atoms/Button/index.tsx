@@ -10,6 +10,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconColor?: string;
   iconName?: ReactIconsName;
   className?: string;
+  iconClassName?: string;
 }
 
 export default function Button({
@@ -19,6 +20,7 @@ export default function Button({
   textColor = 'text-white',
   iconColor,
   className,
+  iconClassName,
   iconName,
   ...rest
 }: Props) {
@@ -38,7 +40,7 @@ export default function Button({
             name={iconName}
             iconColor={iconColor}
             size={24}
-            className="my-0 mr-1 sm:ml-2 lg:mr-4 lg:ml-5"
+            iconClassName={(cn('my-0 mr-1 sm:ml-2 lg:mr-4 lg:ml-5'), iconClassName)}
           />
         )}
         <p className={cn('font-medium', titleSize)}>{title}</p>
