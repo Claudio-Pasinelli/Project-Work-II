@@ -6,7 +6,6 @@ import { IoEye, IoEyeOff } from 'react-icons/io5';
 
 import { cn } from '../../../utils/helpers/tailwindMerge';
 import {
-  Avatar,
   Close,
   Delete,
   Edit,
@@ -21,7 +20,6 @@ import {
 type ReactIconsName =
   // | 'checked'
   // | 'list'
-  | 'avatar'
   | 'reset'
   | 'rightArrow'
   | 'search'
@@ -80,7 +78,6 @@ const IconSvg = ({
     login: <Login className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     logout: <Logout className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     close: <Close className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
-    avatar: <Avatar className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     eyeOn: <IoEye className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     eyeOff: <IoEyeOff className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
   };

@@ -3,15 +3,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, InputPassword } from '../../../atoms';
 import schema from '../validation';
 // import Cookies from 'js-cookie';
-import { User, ROUTES } from '../../../../utils';
+import { User } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const defaultValues = {
   name: '',
   email: '',
   password: '',
-  avatarImg: '',
 };
 
 const Form = () => {
@@ -86,17 +84,19 @@ const Form = () => {
           <section className="w-full grid grid-cols-1 gap-7 place-items-center sm:grid-cols-2">
             <Button
               type="reset"
+              text="Annulla"
               title="Annulla"
               textColor="text-black"
               backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
               iconName="reset"
-              titleSize="text-xs"
+              textSize="text-xs"
             />
             <Button
+              text="Conferma"
               title="Conferma"
+              iconColor="white"
               backgroundColor="bg-yellow-100 hover:bg-yellow-50"
               iconName="rightArrow"
-              name="_action"
               onClick={handleSendEmail}
             />
           </section>

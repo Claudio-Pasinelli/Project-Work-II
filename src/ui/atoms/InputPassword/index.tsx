@@ -14,7 +14,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export default function InputPassword({
   label,
-  labelColor = 'text-white',
+  labelColor = 'text-black',
   name,
   containerClassName,
   error,

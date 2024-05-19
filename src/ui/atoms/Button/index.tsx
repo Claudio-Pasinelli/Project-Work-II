@@ -3,8 +3,9 @@ import { ButtonHTMLAttributes } from 'react';
 import IconSvg, { ReactIconsName } from '../IconSVG';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  text?: string;
   title?: string;
-  titleSize?: string;
+  textSize?: string;
   backgroundColor?: string;
   textColor?: string;
   iconColor?: string;
@@ -14,8 +15,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button({
+  text,
   title,
-  titleSize = 'text-xs',
+  textSize = 'text-xs',
   backgroundColor = 'bg-purple',
   textColor = 'text-white',
   iconColor,
@@ -32,6 +34,7 @@ export default function Button({
         textColor,
         className,
       )}
+      title={title}
       type="button"
       {...rest}>
       <section className="flex w-full justify-center items-center place-content-center">
@@ -43,7 +46,7 @@ export default function Button({
             iconClassName={(cn('my-0 mr-1 sm:ml-2 lg:mr-4 lg:ml-5'), iconClassName)}
           />
         )}
-        <p className={cn('font-medium', titleSize)}>{title}</p>
+        <p className={cn('font-medium', textSize)}>{text}</p>
       </section>
     </button>
   );

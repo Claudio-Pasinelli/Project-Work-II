@@ -6,10 +6,12 @@ import Cookies from 'js-cookie';
 import { ROUTES, User } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import axios from 'axios';
+import { LOGGED, NAME } from '../../../../utils/costants/auth';
 
 const defaultValues = {
-  email: '',
   name: '',
+  email: '',
   password: '',
 };
 
@@ -22,7 +24,6 @@ const Form = () => {
     formState: { errors },
     trigger,
     reset,
-    setValue,
     getValues,
     setError,
   } = methods;
@@ -32,26 +33,35 @@ const Form = () => {
   const handleClickAccess = async () => {
     const hasErrors = await trigger();
 
-    Cookies.set('email', getValues('email'));
-
     if (!hasErrors) {
-      // console.log({errors.});
-
       return hasErrors;
     }
 
-    // !checked ? Cookies.remove(EMAIL) : Cookies.set(EMAIL, getValues(`${EMAIL}`));
+    try {
+      const res = await axios.get('http://localhost:4000/users');
+      const users: User[] = res.data;
 
-    // const response = await dispatch(loginUser(getValues()));
+      const userExists = users.some((user) => user.email === getValues('email'));
 
-    // if (response.payload === null) {
-    //   setError('email', { message: 'Email non valida' });
-    //   setError('password', { message: 'Password non valida' });
-    //   return null;
-    // }
+      if (!userExists) {
+        await axios.post('http://localhost:4000/users', {
+          name: getValues('name'),
+          email: getValues('email'),
+          password: getValues('password'),
+        });
 
-    handleReset();
-    return navigate(ROUTES.home);
+        Cookies.set(LOGGED, 'logged');
+        Cookies.set(NAME, getValues('name'));
+
+        handleReset();
+        return navigate(ROUTES.home);
+      } else {
+        // eslint-disable-next-line quotes
+        setError('email', { message: "L'email esiste già." });
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleReset = () => {
@@ -60,7 +70,6 @@ const Form = () => {
 
   useEffect(() => {
     handleReset();
-    Cookies.get('email') && setValue('email', Cookies.get('email') as string);
   }, []);
 
   return (
@@ -96,14 +105,17 @@ const Form = () => {
           <section className="w-full grid grid-cols-1 gap-7 place-items-center sm:grid-cols-2">
             <Button
               type="reset"
+              text="Annulla"
               title="Annulla"
               textColor="text-black"
               backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
               iconName="reset"
-              titleSize="text-xs"
+              textSize="text-xs"
             />
             <Button
+              text="Conferma"
               title="Conferma"
+              iconColor="white"
               backgroundColor="bg-yellow-100 hover:bg-yellow-50"
               iconName="rightArrow"
               onClick={handleClickAccess}

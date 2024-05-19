@@ -1,5 +1,5 @@
 {
-  "name": "streaming-hub",
+  "name": "project-work",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,8 +13,10 @@
     "@types/react-dom": "^18.3.0",
     "clsx": "^2.1.1",
     "js-cookie": "^3.0.5",
+    "json-server": "^1.0.0-beta.0",
     "latest": "^0.2.0",
     "react": "^18.3.1",
+    "react-axios": "^2.0.6",
     "react-dom": "^18.3.1",
     "react-email": "2.1.2",
     "react-hook-form": "^7.51.4",

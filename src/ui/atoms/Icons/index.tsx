@@ -1,4 +1,3 @@
-export { default as Avatar } from './Avatar';
 export { default as Reset } from './Reset';
 export { default as RightArrow } from './RightArrow';
 export { default as Search } from './Search';

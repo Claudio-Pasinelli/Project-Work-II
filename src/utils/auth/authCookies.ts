@@ -1,31 +1,46 @@
 import Cookies from 'js-cookie';
-import { EMAIL, REFRESH_TOKEN, TOKEN } from '../costants/auth';
+import { LOGGED, NAME } from '../costants/auth';
 
-export function removeTokenCookies(): void {
-  Cookies.remove(TOKEN);
-  Cookies.remove(REFRESH_TOKEN);
+// logged
+export function removeLoggedCookies(): void {
+  Cookies.remove(LOGGED);
 }
 
-export function removeEmailCookies(): void {
-  Cookies.remove(EMAIL);
-}
-
-export function addTokenCookies({
-  token,
-  refreshToken,
+export function addLoggedCookies({
+  logged
 }: {
-  token: string;
-  refreshToken: string;
+  logged: string;
 }): void {
-  Cookies.set(TOKEN, token);
-  Cookies.set(REFRESH_TOKEN, refreshToken);
+  Cookies.set(LOGGED, logged);
 }
 
-export function getEmailCookies(): {
-  email: string | null;
+export function getLoggedCookies(): {
+  logged: string | null;
 } {
-  const email = Cookies.get(EMAIL) || null;
+  const logged = Cookies.get(LOGGED) || null;
   return {
-    email
+    logged
+  };
+}
+
+// nome dell'utente
+export function removeNameCookies(): void {
+  Cookies.remove(NAME);
+}
+
+export function addNameCookies({
+  name
+}: {
+  name: string;
+}): void {
+  Cookies.set(NAME, name);
+}
+
+export function getNameCookies(): {
+  name: string | null;
+} {
+  const name = Cookies.get(NAME) || null;
+  return {
+    name
   };
 }

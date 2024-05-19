@@ -1,3 +1,2 @@
-export const REFRESH_TOKEN = 'refreshToken';
-export const TOKEN = 'token';
-export const EMAIL = 'email';
+export const LOGGED = 'logged';
+export const NAME = 'name';

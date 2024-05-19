@@ -25,10 +25,10 @@ const Form = () => {
           <Button title="Invia" backgroundColor="bg-yellow" iconName="rightArrow" />
           <Button
             type="reset"
-            title="Annulla"
+            text="Annulla"
             backgroundColor="bg-gray-100"
             iconName="reset"
-            titleSize="text-xs"
+            textSize="text-xs"
           />
         </section>
       </article>

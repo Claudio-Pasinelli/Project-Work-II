@@ -32,6 +32,7 @@ export default function SearchInput({ name, containerClassName, error, ...rest }
         iconName={'search'}
         iconColor="black"
         onChange={handleSearch}
+        title="Cerca"
         className="!w-12 h-full p-2 bg-gray-50 border-l border-gray-300 rounded-l-none"
       />
       {error && (

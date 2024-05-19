@@ -7,8 +7,6 @@ interface Props {
 }
 
 function RightArrow({ size = 24, color = '#000000', className }: Props) {
-  console.log(color);
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Claudio Pasinelli",
+      "email": "claudio.pasinelli@nurale.it",
+      "password": "123456"
+    },
+    {
+      "id": "28b5",
+      "name": "Angelo Guerini",
+      "email": "guera02@gmail.com",
+      "password": "guera02"
+    }
+  ]
+}
