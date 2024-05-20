@@ -1,6 +1,6 @@
 ### Link per il mockup fatto con Figma:
 
-[figma]https://www.figma.com/file/r6VM9LxjrXiw0al2Kvdw4F/Project-Work-II?type=design&node-id=1%3A2&mode=design&t=MnfKabrZji4Sn41G-1
+https://www.figma.com/file/r6VM9LxjrXiw0al2Kvdw4F/Project-Work-II?type=design&node-id=1%3A2&mode=design&t=MnfKabrZji4Sn41G-1
 
 ### 1) Clonare la repository
 Clonare la repository nella cartella in cui si desidera ospitare il progetto.
