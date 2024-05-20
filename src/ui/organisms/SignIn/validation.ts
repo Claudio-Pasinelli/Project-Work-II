@@ -5,7 +5,7 @@ const schema = z.object({
   name:  z
   .string()
   .min(3, { message: 'Nome troppo corto.' })
-  .max(15, { message: 'Nome troppo lungo.' }),
+  .max(20, { message: 'Nome troppo lungo.' }),
   password: z
     .string()
     .min(5, { message: 'Password troppo corta.' })

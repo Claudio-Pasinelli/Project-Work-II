@@ -1,13 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../../../utils/helpers/tailwindMerge';
-import { ROUTES, getLoggedCookies } from '../../../utils';
+import { ROUTES } from '../../../utils';
 import { useEffect, useState } from 'react';
 import Avatar from '../Avatar';
 import { SearchInput } from '../../atoms';
 
 const Navbar = () => {
   const location = useLocation();
-  const { logged } = getLoggedCookies();
 
   const [pageName, setPageName] = useState('');
 
@@ -34,7 +33,8 @@ const Navbar = () => {
         <div className="border-l-2 border-black-50 flex flex-col items-start mr-8 pl-8">
           <SearchInput name="search" />
           <section className="w-full flex justify-end mt-4">
-            {logged && location.pathname !== '/' && (
+            {/* {logged && location.pathname !== '/' && ( */}
+            {location.pathname !== '/' && (
               <Link
                 to="/"
                 className={cn(
@@ -60,7 +60,7 @@ const Navbar = () => {
             )}
           </section>
         </div>
-        <Avatar logged={logged} />
+        <Avatar />
       </section>
     </nav>
   );

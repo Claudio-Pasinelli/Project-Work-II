@@ -1,13 +1,4 @@
-import { useEffect } from 'react';
-import { removeLoggedCookies, removeNameCookies } from '../../../utils';
-import { LOGGED } from '../../../utils/costants/auth';
-import Cookies from 'js-cookie';
-
 const Home = () => {
-  useEffect(() => {
-    Cookies.get(LOGGED) !== 'logged' ? (removeLoggedCookies(), removeNameCookies()) : null;
-  }, []);
-
   return (
     <div>
       <div>

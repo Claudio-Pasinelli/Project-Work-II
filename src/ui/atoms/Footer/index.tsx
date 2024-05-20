@@ -15,17 +15,32 @@ const Footer = () => {
             href="https://www.linkedin.com/in/claudio-pasinelli-599503266/"
             target="_blank"
             icon={true}>
-            <img src="/images/socials/linkedin.webp" alt="logo linkedin" className="size-full" />
+            <img
+              src="/images/socials/linkedin.webp"
+              alt="logo linkedin"
+              className="size-full"
+              title="Link al mio account Linkedin"
+            />
           </A>
         </figure>
         <figure className="w-10 h-fit p-1 border border-black rounded-full bg-white">
           <A href="https://twitter.com/ClaudioPasinel1" target="_blank" icon={true}>
-            <img src="/images/socials/twitter.webp" alt="logo twitter" className="size-full" />
+            <img
+              src="/images/socials/twitter.webp"
+              alt="logo twitter"
+              className="size-full"
+              title="Link al mio account Twitter"
+            />
           </A>
         </figure>
         <figure className="w-10 h-fit p-1 border border-black rounded-full bg-white">
           <A href="https://github.com/Claudio-Pasinelli" target="_blank" icon={true}>
-            <img src="/images/socials/github.webp" alt="logo github" className="size-full" />
+            <img
+              src="/images/socials/github.webp"
+              alt="logo github"
+              className="size-full"
+              title="Link al mio account GitHub"
+            />
           </A>
         </figure>
       </section>

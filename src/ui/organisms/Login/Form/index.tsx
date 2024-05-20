@@ -2,12 +2,10 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, A, InputPassword } from '../../../atoms';
 import schema from '../validation';
-import Cookies from 'js-cookie';
 import { ROUTES, User } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { LOGGED, NAME } from '../../../../utils/costants/auth';
 
 const defaultValues = {
   email: '',
@@ -45,8 +43,9 @@ const Form = () => {
       );
 
       if (user) {
-        Cookies.set(LOGGED, 'logged');
-        Cookies.set(NAME, user.name);
+        // Aggiungi l'utente a "me" con lo stesso ID
+        await axios.post('http://localhost:4000/me', user);
+
         handleReset();
         return navigate(ROUTES.home);
       } else {
@@ -62,8 +61,25 @@ const Form = () => {
     reset(defaultValues);
   };
 
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get('http://localhost:4000/me');
+      const meDataArray: User[] = res.data;
+
+      if (meDataArray.length > 0) {
+        for (const meData of meDataArray) {
+          await axios.delete(`http://localhost:4000/me/${meData.id}`);
+        }
+        console.log('Tutti gli elementi in "me" sono stati eliminati');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     handleReset();
+    handleLogout();
   }, []);
 
   return (
@@ -98,6 +114,7 @@ const Form = () => {
               backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
               iconName="reset"
               textSize="text-xs"
+              onClick={handleReset}
             />
             <Button
               text="Conferma"

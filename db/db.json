@@ -7,10 +7,24 @@
       "password": "123456"
     },
     {
-      "id": "28b5",
-      "name": "Angelo Guerini",
-      "email": "guera02@gmail.com",
-      "password": "guera02"
+      "id": "ad0f",
+      "name": "Francesco Rossi",
+      "email": "francesorossi@gmail.com",
+      "password": "salveate"
+    },
+    {
+      "id": "7971",
+      "name": "Tester1",
+      "email": "tester1@gmail.com",
+      "password": "admin"
+    }
+  ],
+  "me": [
+    {
+      "id": "1",
+      "name": "Claudio Pasinelli",
+      "email": "claudio.pasinelli@nurale.it",
+      "password": "123456"
     }
   ]
 }

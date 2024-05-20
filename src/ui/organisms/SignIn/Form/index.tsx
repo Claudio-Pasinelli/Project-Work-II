@@ -2,12 +2,10 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, A, InputPassword } from '../../../atoms';
 import schema from '../validation';
-import Cookies from 'js-cookie';
 import { ROUTES, User } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { LOGGED, NAME } from '../../../../utils/costants/auth';
 
 const defaultValues = {
   name: '',
@@ -44,14 +42,21 @@ const Form = () => {
       const userExists = users.some((user) => user.email === getValues('email'));
 
       if (!userExists) {
-        await axios.post('http://localhost:4000/users', {
+        const newUser = {
           name: getValues('name'),
           email: getValues('email'),
           password: getValues('password'),
-        });
+        };
 
-        Cookies.set(LOGGED, 'logged');
-        Cookies.set(NAME, getValues('name'));
+        // Creare l'utente in "users" e ottenere l'ID
+        const createdUserRes = await axios.post('http://localhost:4000/users', newUser);
+        const createdUserId = createdUserRes.data.id;
+
+        // Usare lo stesso ID per creare l'utente in "me"
+        await axios.post('http://localhost:4000/me', {
+          id: createdUserId,
+          ...newUser,
+        });
 
         handleReset();
         return navigate(ROUTES.home);
@@ -68,8 +73,25 @@ const Form = () => {
     reset(defaultValues);
   };
 
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get('http://localhost:4000/me');
+      const meDataArray: User[] = res.data;
+
+      if (meDataArray.length > 0) {
+        for (const meData of meDataArray) {
+          await axios.delete(`http://localhost:4000/me/${meData.id}`);
+        }
+        console.log('Tutti gli elementi in "me" sono stati eliminati');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     handleReset();
+    handleLogout();
   }, []);
 
   return (

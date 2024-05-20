@@ -2,9 +2,9 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, InputPassword } from '../../../atoms';
 import schema from '../validation';
-// import Cookies from 'js-cookie';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { User } from '../../../../utils';
-import { useNavigate } from 'react-router-dom';
 
 const defaultValues = {
   name: '',
@@ -21,33 +21,47 @@ const Form = () => {
     formState: { errors },
     trigger,
     reset,
-    setValue,
     getValues,
-    setError,
   } = methods;
 
-  const navigate = useNavigate();
+  const [userData, setUserData] = useState<User | null>(null);
 
-  const handleSendEmail = async () => {
-    const hasErrors = await trigger();
+  useEffect(() => {
+    const fetchMe = async () => {
+      try {
+        const res = await axios.get('http://localhost:4000/me');
+        const meData = res.data[0];
+        if (meData) {
+          setUserData(meData);
+          reset(meData);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
-    if (!hasErrors) {
-      // console.log({errors.});
+    fetchMe();
+  }, [reset]);
 
-      return hasErrors;
+  const handleUpdateProfile = async () => {
+    try {
+      const hasErrors = await trigger();
+
+      if (!hasErrors) {
+        return;
+      }
+
+      if (!userData) {
+        console.error('Utente non trovato.');
+        return;
+      }
+
+      const updatedUserData = getValues();
+      await axios.patch(`http://localhost:4000/me/${userData.id}`, updatedUserData);
+    } catch (error) {
+      console.error(error);
     }
-
-    handleReset();
-    // return navigate(ROUTES.home);
   };
-
-  const handleReset = () => {
-    reset(defaultValues);
-  };
-
-  // useEffect(() => {
-  //   // fare la fetch per ottenere i dati dell'utente per pre compilare i dati del form
-  // },[]);
 
   return (
     <FormProvider {...methods}>
@@ -97,7 +111,7 @@ const Form = () => {
               iconColor="white"
               backgroundColor="bg-yellow-100 hover:bg-yellow-50"
               iconName="rightArrow"
-              onClick={handleSendEmail}
+              onClick={handleUpdateProfile}
             />
           </section>
         </article>
