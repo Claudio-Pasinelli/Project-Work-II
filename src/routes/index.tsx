@@ -8,6 +8,8 @@ import {
   PasswordRecoveryPage,
   // RequireAuth,
   ContactsPage,
+  MyRecipesPage,
+  MyRecipesNewPage,
 } from '../ui';
 import SettingsPage from '../ui/pages/Settings';
 
@@ -20,6 +22,8 @@ const AppRoutes = () => {
           <Route path={ROUTES.home} element={<HomePage />} />
           <Route path={ROUTES.contacts} element={<ContactsPage />} />
           <Route path={ROUTES.settings} element={<SettingsPage />} />
+          <Route path={ROUTES.myRecipes} element={<MyRecipesPage />} />
+          <Route path={ROUTES.myRecipesNew} element={<MyRecipesNewPage />} />
           {/* </Route> */}
         </Route>
         <Route path={ROUTES.login} element={<LoginPage />} />

@@ -26,23 +26,6 @@ const Form = () => {
 
   const [userData, setUserData] = useState<User | null>(null);
 
-  useEffect(() => {
-    const fetchMe = async () => {
-      try {
-        const res = await axios.get('http://localhost:4000/me');
-        const meData = res.data[0];
-        if (meData) {
-          setUserData(meData);
-          reset(meData);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchMe();
-  }, [reset]);
-
   const handleUpdateProfile = async () => {
     try {
       const hasErrors = await trigger();
@@ -63,11 +46,32 @@ const Form = () => {
     }
   };
 
+  const handleReset = () => {
+    reset(defaultValues);
+  };
+
+  useEffect(() => {
+    const fetchMe = async () => {
+      try {
+        const res = await axios.get('http://localhost:4000/me');
+        const meData = res.data[0];
+        if (meData) {
+          setUserData(meData);
+          reset(meData);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchMe();
+  }, [reset]);
+
   return (
     <FormProvider {...methods}>
       <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-100 sm:rounded-3xl">
-        <h1 className="w-full h-fit font-FrienchFries bg-orange text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-3xl">
-          PROFILO
+        <h1 className="w-full h-fit bg-orange text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-3xl">
+          IMPOSTAZIONI PROFILO
         </h1>
         <article className="w-3/4 flex flex-col my-5 p-4 text-left bg-gray-50 rounded-3xl shadow-xl sm:m-7 sm:w-fit sm:p-8">
           <section className="w-full">
@@ -76,7 +80,7 @@ const Form = () => {
               labelColor="text-black"
               name="name"
               type="text"
-              placeholder="Inserisci Il tuo nome"
+              placeholder="Inserisci il tuo nome"
               error={errors?.name?.message}
             />
             <Input
@@ -104,6 +108,8 @@ const Form = () => {
               backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
               iconName="reset"
               textSize="text-xs"
+              className="flex-1"
+              onClick={handleReset}
             />
             <Button
               text="Conferma"

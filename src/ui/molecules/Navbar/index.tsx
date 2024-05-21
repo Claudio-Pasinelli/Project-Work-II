@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../../../utils/helpers/tailwindMerge';
 import { ROUTES } from '../../../utils';
 import { useEffect, useState } from 'react';
-import Avatar from '../Avatar';
+import AvatarNavBar from '../AvatarNavBar';
 import { SearchInput } from '../../atoms';
 
 const Navbar = () => {
@@ -19,6 +19,8 @@ const Navbar = () => {
       setPageName('PROFILO');
     } else if (location.pathname === ROUTES.myRecipes) {
       setPageName('LE MIE RICETTE');
+    } else if (location.pathname === ROUTES.myRecipesNew) {
+      setPageName('NUOVA RICETTA');
     } else if (location.pathname === ROUTES.settings) {
       setPageName('IMPOSTAZIONI');
     } else {
@@ -58,9 +60,21 @@ const Navbar = () => {
                 Contattaci
               </Link>
             )}
+            {location.pathname !== '/my-recipes' && (
+              <Link
+                to="/my-recipes"
+                className={cn(
+                  'text-white ml-4',
+                  location.pathname === '/my-recipes'
+                    ? 'bg-black-50 p-2 rounded-2xl'
+                    : 'bg-none p-0 rounded-none',
+                )}>
+                Le mie ricette
+              </Link>
+            )}
           </section>
         </div>
-        <Avatar />
+        <AvatarNavBar />
       </section>
     </nav>
   );

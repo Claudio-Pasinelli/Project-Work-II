@@ -133,6 +133,7 @@ const Form = () => {
               backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
               iconName="reset"
               textSize="text-xs"
+              onClick={handleReset}
             />
             <Button
               text="Conferma"

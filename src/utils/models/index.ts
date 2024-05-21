@@ -20,6 +20,12 @@ export interface Message {
   email: string;
   message: string;
 }
+export interface Recipe {
+  name: string;
+  ingredients: string;
+  process: string;
+  bgColor?: string;
+}
 
 export type IErrorFullContacts = {
   email: string | null;

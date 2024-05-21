@@ -48,7 +48,7 @@ const Form = () => {
   return (
     <FormProvider {...methods}>
       <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-100 sm:rounded-3xl">
-        <h1 className="w-full h-fit font-FrienchFries bg-orange text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-3xl">
+        <h1 className="w-full h-fit bg-orange text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-3xl">
           SCRIVIMI UN MESSAGGIO
         </h1>
         <article className="w-3/4 flex flex-col my-5 p-4 text-left bg-gray-50 rounded-3xl shadow-xl sm:m-7 sm:w-fit sm:p-8">
@@ -58,7 +58,7 @@ const Form = () => {
               labelColor="text-black"
               name="name"
               type="text"
-              placeholder="Inserisci Il tuo nome"
+              placeholder="Inserisci il tuo nome"
               error={errors?.name?.message}
             />
             <Input
@@ -86,6 +86,7 @@ const Form = () => {
               backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
               iconName="reset"
               textSize="text-xs"
+              onClick={handleReset}
             />
             <Button
               text="Conferma"

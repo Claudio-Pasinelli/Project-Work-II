@@ -54,7 +54,9 @@ export default function InputPassword({
         onClick={handleEye}
         iconName={eyeState}
         iconColor="black"
-        className="!w-fit absolute top-1/2 right-5 transform -translate-y-1/2"
+        backgroundColor="bg-white"
+        textSize="!ml-0"
+        className="!w-fit !max-w-fit !min-w-fit !h-fit !absolute top-1/2 right-4 transform -translate-y-1/2"
       />
       <div className="h-4 my-4">
         <p className="text-red text-xs">{error}</p>

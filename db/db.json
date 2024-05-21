@@ -9,14 +9,30 @@
     {
       "id": "ad0f",
       "name": "Francesco Rossi",
-      "email": "francesorossi@gmail.com",
-      "password": "salveate"
+      "email": "francescorossi@gmail.com",
+      "password": "francesco"
     },
     {
       "id": "7971",
       "name": "Tester1",
       "email": "tester1@gmail.com",
       "password": "admin"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "c6aa",
+      "idUser": "1",
+      "name": "lasagna",
+      "ingredients": "ragù, parmigiano",
+      "process": "fdfdsfdsf"
+    },
+    {
+      "id": "59b7",
+      "idUser": "1",
+      "name": "spezzatino",
+      "ingredients": "cibo",
+      "process": "buono"
     }
   ],
   "me": [
