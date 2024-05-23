@@ -113,7 +113,7 @@ const Form = () => {
               error={errors?.ingredients?.message}
             />
             <Textarea
-              label="Scrivi i procedimenti"
+              label="Scrivi il procedimento"
               labelColor="text-black"
               name="process"
               placeholder="Scrivi il procedimento di preparazione"

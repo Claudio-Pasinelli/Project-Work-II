@@ -24,8 +24,8 @@ const MyRecipes = () => {
         params: { idUser: user.id },
       });
       setRecipesData(responseRecipes.data);
-    } catch (error) {
-      console.error('Errore nel recuperare i dati', error);
+    } catch (err) {
+      console.error(err);
     } finally {
       setTimeout(() => {
         setLoading(false);
@@ -56,8 +56,8 @@ const MyRecipes = () => {
       await axios.delete(`http://localhost:4000/recipes/${recipeId}`);
       setRecipesData(recipesData.filter((r) => r.id !== recipeId));
       setIsOpen(false);
-    } catch (error) {
-      console.error('Errore durante la cancellazione della ricetta', error);
+    } catch (err) {
+      console.error(err);
     } finally {
       setTimeout(() => {
         setLoading(false);
@@ -99,7 +99,9 @@ const MyRecipes = () => {
             )}>
             {recipesData.length != 0 ? (
               recipesData.map((recipe, index) => (
-                <article className="w-64 h-full break-words" key={recipe.name + index}>
+                <article
+                  className="w-64 h-full break-words transform transition duration-300 hover:scale-105 hover:-translate-y-1"
+                  key={recipe.name + index}>
                   <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
                     <article className="flex flex-col justify-between p-2 border-b border-gray-200 items-center bg-orange rounded-t-3xl shadow-xl ">
                       <section className="w-full flex place-content-between">
