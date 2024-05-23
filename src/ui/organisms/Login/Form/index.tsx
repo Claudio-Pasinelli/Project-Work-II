@@ -43,7 +43,6 @@ const Form = () => {
       );
 
       if (user) {
-        // Aggiungi l'utente a "me" con lo stesso ID
         await axios.post('http://localhost:4000/me', user);
 
         handleReset();

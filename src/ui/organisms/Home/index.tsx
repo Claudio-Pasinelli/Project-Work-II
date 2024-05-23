@@ -1,6 +1,10 @@
+import { RECIPES_TYPES } from '../../../utils';
+import { Dropdown } from '../../atoms';
+
 const Home = () => {
   return (
     <article>
+      {/* <Dropdown data={RECIPES_TYPES} name="sono bello" /> */}
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur eligendi ad,
       fugiat perferendis alias iste. Cumque aliquam a perferendis natus mollitia, nihil architecto
       laudantium, obcaecati facilis sint fugit facere. Lorem ipsum dolor sit amet consectetur,

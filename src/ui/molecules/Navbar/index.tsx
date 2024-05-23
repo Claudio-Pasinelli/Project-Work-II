@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { cn } from '../../../utils/helpers/tailwindMerge';
 import { ROUTES } from '../../../utils';
 import { useEffect, useState } from 'react';
@@ -7,6 +7,7 @@ import { SearchInput } from '../../atoms';
 
 const Navbar = () => {
   const location = useLocation();
+  const params = useParams();
 
   const [pageName, setPageName] = useState('');
 
@@ -19,14 +20,18 @@ const Navbar = () => {
       setPageName('PROFILO');
     } else if (location.pathname === ROUTES.myRecipes) {
       setPageName('LE MIE RICETTE');
-    } else if (location.pathname === ROUTES.myRecipesNew) {
-      setPageName('NUOVA RICETTA');
+    } else if (location.pathname.startsWith(ROUTES.myRecipesForm)) {
+      if (params.id) {
+        setPageName('MODIFICA UNA RICETTA');
+      } else {
+        setPageName('NUOVA RICETTA');
+      }
     } else if (location.pathname === ROUTES.settings) {
       setPageName('IMPOSTAZIONI');
     } else {
       setPageName('');
     }
-  }, [location.pathname]);
+  }, [location.pathname, params.id]);
 
   return (
     <nav className="sticky top-0 z-50 w-full h-20 min-h-28 flex justify-between items-center bg-yellow-100 py-2 px-4 shadow-xl">
@@ -35,7 +40,6 @@ const Navbar = () => {
         <div className="border-l-2 border-black-50 flex flex-col items-start mr-8 pl-8">
           <SearchInput name="search" />
           <section className="w-full flex justify-end mt-4">
-            {/* {logged && location.pathname !== '/' && ( */}
             {location.pathname !== '/' && (
               <Link
                 to="/"

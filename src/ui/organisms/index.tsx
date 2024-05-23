@@ -5,4 +5,4 @@ export { default as Home } from './Home';
 export { default as Contacts } from './Contacts';
 export { default as Settings } from './Settings';
 export { default as MyRecipes } from './MyRecipes';
-export { default as MyRecipesNew } from './MyRecipesNew';
+export { default as MyRecipesForm } from './MyRecipesForm';

@@ -46,7 +46,7 @@ export default function Button({
             iconClassName={(cn('my-0 mr-1 sm:ml-2 lg:mr-4 lg:ml-5'), iconClassName)}
           />
         )}
-        <p className={cn('ml-3 font-medium', textSize)}>{text}</p>
+        {text ? <p className={cn('ml-3 font-medium', textSize)}>{text}</p> : null}
       </section>
     </button>
   );

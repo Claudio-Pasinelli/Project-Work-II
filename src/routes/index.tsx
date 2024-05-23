@@ -9,7 +9,7 @@ import {
   // RequireAuth,
   ContactsPage,
   MyRecipesPage,
-  MyRecipesNewPage,
+  MyRecipesFormPage,
 } from '../ui';
 import SettingsPage from '../ui/pages/Settings';
 
@@ -23,7 +23,7 @@ const AppRoutes = () => {
           <Route path={ROUTES.contacts} element={<ContactsPage />} />
           <Route path={ROUTES.settings} element={<SettingsPage />} />
           <Route path={ROUTES.myRecipes} element={<MyRecipesPage />} />
-          <Route path={ROUTES.myRecipesNew} element={<MyRecipesNewPage />} />
+          <Route path={ROUTES.myRecipesForm + '/:id?'} element={<MyRecipesFormPage />} />
           {/* </Route> */}
         </Route>
         <Route path={ROUTES.login} element={<LoginPage />} />

@@ -4,7 +4,7 @@ import Navbar from '../Navbar';
 
 const Layout = () => {
   return (
-    <section className="size-full">
+    <section className="size-full overflow-x-hidden">
       <section className="w-full h-screen justify-between flex flex-col text-center">
         <Navbar />
         <section className="w-full h-auto">

@@ -21,26 +21,26 @@
   ],
   "recipes": [
     {
-      "id": "c6aa",
       "idUser": "1",
-      "name": "lasagna",
-      "ingredients": "ragù, parmigiano",
-      "process": "fdfdsfdsf"
+      "name": "Lasagne",
+      "ingredients": "Semola di grano duro rimacinata 350 g Farina 00 150 g Spinaci 250 g Uova 2 Tuorli 3",
+      "process": "Per preparare le lasagne alla bolognese, iniziate dal ragù. Preparate il brodo vegetale che dovrete tenere in caldo. Poi prendete la pancetta, tagliatela prima a striscioline 1. Con un coltello o una mezzaluna sminuzzatela per bene 2. A parte preparate un trito fine con carote, cipolle, sedano e tenetelo da parte 3. ",
+      "id": "c6aa"
     },
     {
-      "id": "59b7",
-      "idUser": "1",
-      "name": "spezzatino",
-      "ingredients": "cibo",
-      "process": "buono"
+      "id": "f685",
+      "idUser": "7971",
+      "name": "test 1",
+      "ingredients": "test 1",
+      "process": "test 1"
     }
   ],
   "me": [
     {
-      "id": "1",
-      "name": "Claudio Pasinelli",
-      "email": "claudio.pasinelli@nurale.it",
-      "password": "123456"
+      "id": "7971",
+      "name": "Tester1",
+      "email": "tester1@gmail.com",
+      "password": "admin"
     }
   ]
 }

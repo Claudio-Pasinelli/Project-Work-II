@@ -5,4 +5,4 @@ export { default as SignInPage } from './SignInPage';
 export { default as PasswordRecoveryPage } from './PasswordRecoveryPage';
 export { default as ContactsPage } from './ContactsPage';
 export { default as MyRecipesPage } from './MyRecipesPage';
-export { default as MyRecipesNewPage } from './MyRecipesNewPage';
+export { default as MyRecipesFormPage } from './MyRecipesFormPage';

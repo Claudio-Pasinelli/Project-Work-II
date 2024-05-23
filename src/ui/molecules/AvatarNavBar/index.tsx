@@ -26,10 +26,8 @@ const AvatarNavBar = () => {
           const nameParts = meData.name.split(' ');
           let initials = '';
           if (nameParts.length === 1) {
-            // Se il nome è composto da una sola parola, prendi la prima e l'ultima lettera
             initials = nameParts[0].charAt(0) + nameParts[0].charAt(nameParts[0].length - 1);
           } else {
-            // Altrimenti prendi le iniziali di ogni parola
             initials = nameParts.map((part: string) => part.charAt(0)).join('');
           }
           setUsername(initials.toUpperCase());

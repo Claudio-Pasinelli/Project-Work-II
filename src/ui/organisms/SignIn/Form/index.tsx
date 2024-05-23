@@ -48,11 +48,9 @@ const Form = () => {
           password: getValues('password'),
         };
 
-        // Creare l'utente in "users" e ottenere l'ID
         const createdUserRes = await axios.post('http://localhost:4000/users', newUser);
         const createdUserId = createdUserRes.data.id;
 
-        // Usare lo stesso ID per creare l'utente in "me"
         await axios.post('http://localhost:4000/me', {
           id: createdUserId,
           ...newUser,

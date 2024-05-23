@@ -1,10 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
-import { useOnClickOutside } from '../../../utils/hooks';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES, User } from '../../../utils';
-import { Button } from '../../atoms';
-import { cn } from '../../../utils/helpers/tailwindMerge';
-import axios from 'axios';
 
 interface Props {
   userData: User | null;
@@ -28,10 +24,8 @@ const Avatar = ({ userData, isMe = false }: Props) => {
           const nameParts = userData.name.split(' ');
           let initials = '';
           if (nameParts.length === 1) {
-            // Se il nome è composto da una sola parola, prendi la prima e l'ultima lettera
             initials = nameParts[0].charAt(0) + nameParts[0].charAt(nameParts[0].length - 1);
           } else {
-            // Altrimenti prendi le iniziali di ogni parola
             initials = nameParts.map((part: string) => part.charAt(0)).join('');
           }
           setUsername(initials.toUpperCase());

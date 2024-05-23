@@ -8,9 +8,9 @@
 }
  
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
     background: #ffffff;
-}
+} */
  
 /* Handle */
 ::-webkit-scrollbar-thumb {

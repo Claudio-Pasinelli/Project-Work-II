@@ -2,9 +2,8 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, Textarea } from '../../../atoms';
 import schema from '../validation';
-// import Cookies from 'js-cookie';
 import { Recipe, ROUTES, User } from '../../../../utils';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Avatar } from '../../../molecules';
@@ -16,6 +15,7 @@ const defaultValues = {
 };
 
 const Form = () => {
+  const params = useParams();
   const methods = useForm<Recipe>({
     defaultValues,
     resolver: zodResolver(schema),
@@ -24,16 +24,13 @@ const Form = () => {
     formState: { errors },
     trigger,
     reset,
-    setValue,
     getValues,
-    setError,
   } = methods;
 
   const [userData, setUserData] = useState<User | null>(null);
-
   const navigate = useNavigate();
 
-  const handleCreateRecipe = async () => {
+  const handleFormSubmit = async () => {
     const hasErrors = await trigger();
 
     if (!hasErrors) {
@@ -47,10 +44,22 @@ const Form = () => {
       process: getValues('process'),
     };
 
-    axios.post('http://localhost:4000/recipes', newRecipe);
-
-    handleReset();
-    return navigate(ROUTES.myRecipes);
+    if (params.id) {
+      try {
+        await axios.put(`http://localhost:4000/recipes/${params.id}`, newRecipe);
+        navigate(ROUTES.myRecipes);
+      } catch (error) {
+        // eslint-disable-next-line quotes
+        console.error("Errore durante l'aggiornamento della ricetta", error);
+      }
+    } else {
+      try {
+        await axios.post('http://localhost:4000/recipes', newRecipe);
+        navigate(ROUTES.myRecipes);
+      } catch (error) {
+        console.error('Errore durante la creazione della ricetta', error);
+      }
+    }
   };
 
   const handleReset = () => {
@@ -58,19 +67,29 @@ const Form = () => {
   };
 
   const fetchMe = async () => {
-    const res = await axios.get('http://localhost:4000/me');
-    setUserData(res.data[0]);
+    try {
+      const res = await axios.get('http://localhost:4000/me');
+      setUserData(res.data[0]);
+    } catch (error) {
+      console.error('Errore nel recuperare i dati utente', error);
+    }
   };
 
   useEffect(() => {
     fetchMe();
-  }, []);
+    if (params.id) {
+      axios.get(`http://localhost:4000/recipes/${params.id}`).then((response) => {
+        const recipeData = response.data;
+        reset(recipeData);
+      });
+    }
+  }, [params.id]);
 
   return (
     <FormProvider {...methods}>
       <article className="flex flex-col">
         <h1 className="w-full h-fit mb-4 text-4xl text-center content-center sm:mb-9">
-          CREA LA TUA RICETTA
+          {params.id ? 'MODIFICA LA TUA RICETTA' : 'CREA LA TUA RICETTA'}
         </h1>
         <article className="w-64 h-full max-h-[37.5rem] flex flex-col self-center text-left bg-gray-50 border border-gray-200 rounded-3xl shadow-xl">
           <article className="p-2.5 bg-orange text-center content-center border-b border-gray-200 rounded-t-3xl shadow-xl sm:rounded-t-3xl">
@@ -100,7 +119,7 @@ const Form = () => {
               placeholder="Scrivi il procedimento di preparazione"
               error={errors?.process?.message}
             />
-            <section className="w-full p-2.5 grid grid-cols-1 gap-7 place-items-center sm:grid-cols-2">
+            <section className="w-full flex justify-around p-2.5 place-items-center">
               <Button
                 type="reset"
                 text="Annulla"
@@ -119,7 +138,7 @@ const Form = () => {
                 className="!w-auto"
                 backgroundColor="bg-yellow-100 hover:bg-yellow-50"
                 iconName="rightArrow"
-                onClick={handleCreateRecipe}
+                onClick={handleFormSubmit}
               />
             </section>
           </section>
