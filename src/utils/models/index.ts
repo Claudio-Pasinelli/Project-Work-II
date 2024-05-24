@@ -22,7 +22,7 @@ export interface Message {
 }
 export interface Recipe {
   id?: number;
-  name: string;
+  title: string;
   ingredients: string;
   process: string;
   bgColor?: string;

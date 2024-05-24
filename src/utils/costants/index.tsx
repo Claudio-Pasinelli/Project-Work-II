@@ -15,40 +15,40 @@ export const RESEND_API_KEY = 're_YJf373dW_MpknFi27ddnCEKAM27iS4JNM';
 
 export interface RecipesTypes {
   value: string;
-  name: string;
+  id: number;
 }
 
-export const RECIPES_TYPES: RecipesTypes[] = [
+export const RECIPES_TYPES: Array<RecipesTypes> = [
   {
-    value: 'ANTIPASTI',
-    name: 'Antipasti',
+    id: 1,
+    value: 'Antipasti',
   },
   {
-    value: 'PRIMI',
-    name: 'Primi',
+    id: 2,
+    value: 'Primi',
   },
   {
-    value: 'SECONDI',
-    name: 'Secondi',
+    id: 3,
+    value: 'Secondi',
   },
   {
-    value: 'CONTORNI',
-    name: 'Contorni',
+    id: 4,
+    value: 'Contorni',
   },
   {
-    value: 'BEVANDE',
-    name: 'Bevande',
+    id: 5,
+    value: 'Bevande',
   },
   {
-    value: 'DOLCI',
-    name: 'Dolci',
+    id: 6,
+    value: 'Dolci',
   },
   {
-    value: 'VEGANI',
-    name: 'Vegani',
+    id: 7,
+    value: 'Vegani',
   },
   {
-    value: 'SPECIALI',
-    name: 'Speciali',
+    id: 8,
+    value: 'Speciali',
   },
 ];

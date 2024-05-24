@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Avatar } from '../../../molecules';
 
 const defaultValues = {
-  name: '',
+  title: '',
   ingredients: '',
   process: '',
 };
@@ -39,7 +39,7 @@ const Form = () => {
 
     const newRecipe = {
       idUser: userData?.id,
-      name: getValues('name'),
+      title: getValues('title'),
       ingredients: getValues('ingredients'),
       process: getValues('process'),
     };
@@ -91,19 +91,19 @@ const Form = () => {
         <h1 className="w-full h-fit mb-4 text-4xl text-center content-center sm:mb-9">
           {params.id ? 'MODIFICA LA TUA RICETTA' : 'CREA LA TUA RICETTA'}
         </h1>
-        <article className="w-64 h-full max-h-[37.5rem] flex flex-col self-center text-left bg-gray-50 border border-gray-200 rounded-3xl shadow-xl">
+        <article className="w-64 max-h-[37.5rem] flex flex-col self-center text-left bg-gray-50 border border-gray-200 rounded-3xl shadow-xl">
           <article className="p-2.5 bg-orange text-center content-center border-b border-gray-200 rounded-t-3xl shadow-xl sm:rounded-t-3xl">
             {userData ? <Avatar userData={userData} isMe={true} /> : null}
             <Input
               label="Nome Ricetta"
               labelColor="text-white"
-              name="name"
+              name="title"
               type="text"
               placeholder="Inserisci il nome della ricetta"
-              error={errors?.name?.message}
+              error={errors?.title?.message}
             />
           </article>
-          <section className="size-full p-2.5">
+          <section className="flex-grow p-2.5 overflow-auto">
             <Input
               label="Lista ingredienti"
               labelColor="text-black"
@@ -119,28 +119,28 @@ const Form = () => {
               placeholder="Scrivi il procedimento di preparazione"
               error={errors?.process?.message}
             />
-            <section className="w-full flex justify-around p-2.5 place-items-center">
-              <Button
-                type="reset"
-                text="Annulla"
-                title="Annulla"
-                textColor="text-black"
-                className="!w-auto"
-                backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
-                iconName="reset"
-                textSize="text-xs"
-                onClick={handleReset}
-              />
-              <Button
-                text="Conferma"
-                title="Conferma"
-                iconColor="white"
-                className="!w-auto"
-                backgroundColor="bg-yellow-100 hover:bg-yellow-50"
-                iconName="rightArrow"
-                onClick={handleFormSubmit}
-              />
-            </section>
+          </section>
+          <section className="w-full flex justify-around p-2.5 place-items-center mt-4">
+            <Button
+              type="reset"
+              text="Annulla"
+              title="Annulla"
+              textColor="text-black"
+              className="!w-auto"
+              backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
+              iconName="reset"
+              textSize="text-xs"
+              onClick={handleReset}
+            />
+            <Button
+              text="Conferma"
+              title="Conferma"
+              iconColor="white"
+              className="!w-auto"
+              backgroundColor="bg-yellow-100 hover:bg-yellow-50"
+              iconName="rightArrow"
+              onClick={handleFormSubmit}
+            />
           </section>
         </article>
       </article>

@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const schema = z.object({
-  name: z.coerce.string()
+  title: z.coerce.string()
   .min(1, { message: 'Nome troppo corto.' })
   .max(25, { message: 'Nome troppo lungo.' }),
   ingredients: z.coerce.string().min(1, { message: 'Gli ingredienti sono insufficienti.'}),

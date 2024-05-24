@@ -22,25 +22,46 @@
   "recipes": [
     {
       "idUser": "1",
-      "name": "Lasagne",
+      "title": "Lasagne",
       "ingredients": "Semola di grano duro rimacinata 350 g Farina 00 150 g Spinaci 250 g Uova 2 Tuorli 3",
       "process": "Per preparare le lasagne alla bolognese, iniziate dal ragù. Preparate il brodo vegetale che dovrete tenere in caldo. Poi prendete la pancetta, tagliatela prima a striscioline 1. Con un coltello o una mezzaluna sminuzzatela per bene 2. A parte preparate un trito fine con carote, cipolle, sedano e tenetelo da parte 3. ",
       "id": "c6aa"
     },
     {
-      "id": "f685",
       "idUser": "7971",
-      "name": "test 1",
-      "ingredients": "test 1",
-      "process": "test 1"
+      "title": "test 1",
+      "ingredients": "test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 test 1 ",
+      "process": "sono un tester bello\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "id": "f685"
+    },
+    {
+      "id": "85df",
+      "idUser": "ad0f",
+      "title": "prova 1",
+      "ingredients": "prova 1",
+      "process": "prova 1"
+    },
+    {
+      "id": "2ade",
+      "idUser": "1",
+      "title": "Test 2",
+      "ingredients": "Test 2",
+      "process": "Test 2"
+    },
+    {
+      "id": "6a69",
+      "idUser": "1",
+      "title": "lasagna",
+      "ingredients": "lasagna",
+      "process": "lasagna"
     }
   ],
   "me": [
     {
-      "id": "7971",
-      "name": "Tester1",
-      "email": "tester1@gmail.com",
-      "password": "admin"
+      "id": "1",
+      "name": "Claudio Pasinelli",
+      "email": "claudio.pasinelli@nurale.it",
+      "password": "123456"
     }
   ]
 }

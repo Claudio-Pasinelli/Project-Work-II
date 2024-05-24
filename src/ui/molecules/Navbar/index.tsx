@@ -3,7 +3,6 @@ import { cn } from '../../../utils/helpers/tailwindMerge';
 import { ROUTES } from '../../../utils';
 import { useEffect, useState } from 'react';
 import AvatarNavBar from '../AvatarNavBar';
-import { SearchInput } from '../../atoms';
 
 const Navbar = () => {
   const location = useLocation();
@@ -38,8 +37,7 @@ const Navbar = () => {
       <h1 className="text-white font-bold">{pageName}</h1>
       <section className="flex items-center">
         <div className="border-l-2 border-black-50 flex flex-col items-start mr-8 pl-8">
-          <SearchInput name="search" />
-          <section className="w-full flex justify-end mt-4">
+          <section className="w-full flex justify-end">
             {location.pathname !== '/' && (
               <Link
                 to="/"
