@@ -67,7 +67,12 @@ const MyRecipes = () => {
 
   const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.toLowerCase();
-    const filtered = recipesData.filter((recipe) => recipe.title.toLowerCase().includes(value));
+    const filtered = recipesData.filter(
+      (recipe) =>
+        recipe.title.toLowerCase().includes(value) ||
+        recipe.ingredients.toLowerCase().includes(value) ||
+        recipe.process.toLowerCase().includes(value),
+    );
     setFilteredRecipesData(filtered);
   };
 
@@ -149,6 +154,8 @@ const MyRecipes = () => {
                   </article>
                 </article>
               ))
+            ) : recipesData.length != 0 && filteredRecipesData.length === 0 ? (
+              <p>Nessuna ricetta è stata trovata.</p>
             ) : (
               <p>Al momento non hai nessuna ricetta.</p>
             )}
