@@ -34,7 +34,10 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 w-full h-20 min-h-28 flex justify-between items-center bg-yellow-200 py-2 px-4 shadow-xl">
-      <h1 className="text-white font-bold">{pageName}</h1>
+      <section className="w-1/4 flex justify-start items-center">
+        <img src="logo.png" alt="logo" className="w-fit h-28" />
+        <h1 className="text-white font-bold">{pageName}</h1>
+      </section>
       <section className="flex items-center">
         <div className="border-l-2 border-black-50 flex flex-col items-start mr-8 pl-8">
           <section className="w-full flex justify-end">
