@@ -29,13 +29,13 @@ export default function Textarea({
         id={name}
         rows={3}
         className={cn(
-          'w-full border-y-2 border-x-8 border-solid border-yellow-100 hover:border-yellow-50 active:border-yellow-50 rounded-3xl p-2 text-center placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent',
+          'w-full border-y-2 border-x-8 border-solid border-yellow-200 hover:border-yellow-50 active:border-yellow-50 rounded-3xl p-2 text-center placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent',
         )}
         {...register(name)}
         {...rest}
       />
       <div className="h-4 my-4">
-        <p className="text-red text-xs">{error}</p>
+        <p className="text-red-100 text-xs">{error}</p>
       </div>
     </section>
   );

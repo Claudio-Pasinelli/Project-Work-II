@@ -26,6 +26,7 @@ export interface Recipe {
   ingredients: string;
   process: string;
   bgColor?: string;
+  type: string;
 }
 
 export type IErrorFullContacts = {

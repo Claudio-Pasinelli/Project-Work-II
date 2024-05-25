@@ -33,7 +33,7 @@ const Navbar = () => {
   }, [location.pathname, params.id]);
 
   return (
-    <nav className="sticky top-0 z-50 w-full h-20 min-h-28 flex justify-between items-center bg-yellow-100 py-2 px-4 shadow-xl">
+    <nav className="sticky top-0 z-50 w-full h-20 min-h-28 flex justify-between items-center bg-yellow-200 py-2 px-4 shadow-xl">
       <h1 className="text-white font-bold">{pageName}</h1>
       <section className="flex items-center">
         <div className="border-l-2 border-black-50 flex flex-col items-start mr-8 pl-8">

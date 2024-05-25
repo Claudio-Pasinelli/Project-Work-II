@@ -1,17 +1,21 @@
+/* eslint-disable quotes */
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Input, Textarea } from '../../../atoms';
+import { Button, Dropdown, Input, Textarea } from '../../../atoms';
 import schema from '../validation';
-import { Recipe, ROUTES, User } from '../../../../utils';
+import { Recipe, RECIPES_TYPES, ROUTES, User } from '../../../../utils';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Avatar } from '../../../molecules';
+import { cn } from '../../../../utils/helpers/tailwindMerge';
 
 const defaultValues = {
   title: '',
   ingredients: '',
   process: '',
+  type: '',
+  bgColor: '',
 };
 
 const Form = () => {
@@ -25,9 +29,11 @@ const Form = () => {
     trigger,
     reset,
     getValues,
+    setValue,
   } = methods;
 
   const [userData, setUserData] = useState<User | null>(null);
+  const [bgColor, setBgColor] = useState<string>('');
   const navigate = useNavigate();
 
   const handleFormSubmit = async () => {
@@ -37,11 +43,32 @@ const Form = () => {
       return hasErrors;
     }
 
+    const type = getValues('type');
+
     const newRecipe = {
       idUser: userData?.id,
       title: getValues('title'),
       ingredients: getValues('ingredients'),
       process: getValues('process'),
+      type: type,
+      bgColor:
+        type === 'Antipasti'
+          ? 'bg-orange'
+          : type === 'Primi'
+            ? 'bg-lightblue'
+            : type === 'Secondi'
+              ? 'bg-pink'
+              : type === 'Contorni'
+                ? 'bg-amber'
+                : type === 'Bevande'
+                  ? 'bg-indigo'
+                  : type === 'Dolci'
+                    ? 'bg-yellow-200'
+                    : type === 'Vegani'
+                      ? 'bg-green'
+                      : type === 'Speciali'
+                        ? 'bg-red-100'
+                        : '',
     };
 
     if (params.id) {
@@ -49,7 +76,6 @@ const Form = () => {
         await axios.put(`http://localhost:4000/recipes/${params.id}`, newRecipe);
         navigate(ROUTES.myRecipes);
       } catch (error) {
-        // eslint-disable-next-line quotes
         console.error("Errore durante l'aggiornamento della ricetta", error);
       }
     } else {
@@ -81,6 +107,8 @@ const Form = () => {
       axios.get(`http://localhost:4000/recipes/${params.id}`).then((response) => {
         const recipeData = response.data;
         reset(recipeData);
+        setBgColor(recipeData.bgColor);
+        setValue('type', recipeData.type);
       });
     }
   }, [params.id]);
@@ -91,58 +119,70 @@ const Form = () => {
         <h1 className="w-full h-fit mb-4 text-4xl text-center content-center sm:mb-9">
           {params.id ? 'MODIFICA LA TUA RICETTA' : 'CREA LA TUA RICETTA'}
         </h1>
-        <article className="w-64 max-h-[37.5rem] flex flex-col self-center text-left bg-gray-50 border border-gray-200 rounded-3xl shadow-xl">
-          <article className="p-2.5 bg-orange text-center content-center border-b border-gray-200 rounded-t-3xl shadow-xl sm:rounded-t-3xl">
-            {userData ? <Avatar userData={userData} isMe={true} /> : null}
-            <Input
-              label="Nome Ricetta"
-              labelColor="text-white"
-              name="title"
-              type="text"
-              placeholder="Inserisci il nome della ricetta"
-              error={errors?.title?.message}
-            />
+        <section className="w-full flex">
+          <article className="w-64 max-h-[37.5rem] flex flex-col self-center text-left bg-gray-50 border border-gray-200 rounded-3xl shadow-xl">
+            <article
+              className={cn(
+                'p-2.5 text-center content-center border-b border-gray-200 rounded-t-3xl shadow-xl sm:rounded-t-3xl',
+                bgColor ? bgColor : 'bg-gray-200',
+              )}>
+              {userData ? <Avatar userData={userData} isMe={true} /> : null}
+              <Input
+                label="Nome Ricetta"
+                labelColor="text-white"
+                name="title"
+                type="text"
+                placeholder="Inserisci il nome della ricetta"
+                error={errors?.title?.message}
+              />
+            </article>
+            <section className="flex-grow p-2.5 overflow-auto">
+              <Input
+                label="Lista ingredienti"
+                labelColor="text-black"
+                name="ingredients"
+                type="text"
+                placeholder="Inserisci gli ingredienti"
+                error={errors?.ingredients?.message}
+              />
+              <Textarea
+                label="Scrivi il procedimento"
+                labelColor="text-black"
+                name="process"
+                placeholder="Scrivi il procedimento di preparazione"
+                error={errors?.process?.message}
+              />
+            </section>
+            <section className="w-full flex justify-around p-2.5 place-items-center mt-4">
+              <Button
+                type="reset"
+                text="Annulla"
+                title="Annulla"
+                textColor="text-black"
+                className="!w-auto"
+                backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
+                iconName="reset"
+                textSize="text-xs"
+                onClick={handleReset}
+              />
+              <Button
+                text="Conferma"
+                title="Conferma"
+                iconColor="white"
+                className="!w-auto"
+                backgroundColor="bg-yellow-200 hover:bg-yellow-50"
+                iconName="rightArrow"
+                onClick={handleFormSubmit}
+              />
+            </section>
           </article>
-          <section className="flex-grow p-2.5 overflow-auto">
-            <Input
-              label="Lista ingredienti"
-              labelColor="text-black"
-              name="ingredients"
-              type="text"
-              placeholder="Inserisci gli ingredienti"
-              error={errors?.ingredients?.message}
-            />
-            <Textarea
-              label="Scrivi il procedimento"
-              labelColor="text-black"
-              name="process"
-              placeholder="Scrivi il procedimento di preparazione"
-              error={errors?.process?.message}
-            />
-          </section>
-          <section className="w-full flex justify-around p-2.5 place-items-center mt-4">
-            <Button
-              type="reset"
-              text="Annulla"
-              title="Annulla"
-              textColor="text-black"
-              className="!w-auto"
-              backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
-              iconName="reset"
-              textSize="text-xs"
-              onClick={handleReset}
-            />
-            <Button
-              text="Conferma"
-              title="Conferma"
-              iconColor="white"
-              className="!w-auto"
-              backgroundColor="bg-yellow-100 hover:bg-yellow-50"
-              iconName="rightArrow"
-              onClick={handleFormSubmit}
-            />
-          </section>
-        </article>
+          <Dropdown
+            label="Scegli il tipo di ricetta"
+            options={RECIPES_TYPES}
+            name="type"
+            error={errors?.type?.message}
+          />
+        </section>
       </article>
     </FormProvider>
   );

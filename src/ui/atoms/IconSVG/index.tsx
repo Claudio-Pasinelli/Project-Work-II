@@ -30,8 +30,8 @@ type ReactIconsName =
   | 'login'
   | 'logout'
   | 'close'
-  // | 'dropDown'
-  // | 'dropUp'
+  | 'dropDown'
+  | 'dropUp'
   | 'eyeOn'
   | 'eyeOff';
 
@@ -64,8 +64,8 @@ const IconSvg = ({
   const Icons = {
     // checked: <MdCheck className={iconStyle} size={size} aria-hidden="true" />, // no(?)
     // list: <BsList className={iconStyle} size={size} aria-hidden="true" />, // no(?)
-    // dropDown: <HiOutlineChevronDown className={iconStyle} size={size} aria-hidden="true" />, // no(?)
-    // dropUp: <HiOutlineChevronUp className={iconStyle} size={size} aria-hidden="true" />, // no(?)
+    dropDown: <HiOutlineChevronDown className={iconStyle} size={size} aria-hidden="true" />, // no(?)
+    dropUp: <HiOutlineChevronUp className={iconStyle} size={size} aria-hidden="true" />, // no(?)
     reset: <Reset className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     rightArrow: (
       <RightArrow className={iconStyle} color={iconColor} size={size} aria-hidden="true" />

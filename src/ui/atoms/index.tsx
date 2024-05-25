@@ -9,3 +9,4 @@ export { default as A } from './A';
 export { default as SearchInput } from './SearchInput';
 export { default as Loader } from './Loader';
 export { default as Dropdown } from './Dropdown';
+export { default as DropdownFilter } from './DropdownFilter';

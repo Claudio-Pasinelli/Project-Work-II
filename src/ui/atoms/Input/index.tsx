@@ -11,9 +11,9 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function Input({
+  name,
   label,
   labelColor = 'text-black',
-  name,
   containerClassName,
   error,
   ...rest
@@ -29,13 +29,13 @@ export default function Input({
       <input
         id={name}
         className={cn(
-          'h-10 border-y-2 border-x-8 border-solid border-yellow-100 hover:border-yellow-50 focus:border-indigo active:border-yellow-50 rounded-3xl p-2 text-center placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent',
+          'h-10 border-y-2 border-x-8 border-solid border-yellow-200 hover:border-yellow-50 focus:border-indigo active:border-yellow-50 rounded-3xl p-2 text-center placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:border-transparent',
         )}
         {...register(name)}
         {...rest}
       />
       <div className="h-4 my-4">
-        <p className="text-red text-xs">{error}</p>
+        <p className="text-red-100 text-xs">{error}</p>
       </div>
     </section>
   );

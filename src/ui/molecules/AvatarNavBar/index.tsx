@@ -100,7 +100,7 @@ const AvatarNavBar = () => {
                 }}
               />
               <p
-                className="text-red cursor-pointer"
+                className="text-red-100 cursor-pointer"
                 onClick={() => {
                   navigate(ROUTES.login);
                   setOpen(false);

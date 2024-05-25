@@ -25,43 +25,62 @@
       "title": "Lasagne",
       "ingredients": "Semola di grano duro rimacinata 350 g Farina 00 150 g Spinaci 250 g Uova 2 Tuorli 3",
       "process": "Per preparare le lasagne alla bolognese, iniziate dal ragù. Preparate il brodo vegetale che dovrete tenere in caldo. Poi prendete la pancetta, tagliatela prima a striscioline 1. Con un coltello o una mezzaluna sminuzzatela per bene 2. A parte preparate un trito fine con carote, cipolle, sedano e tenetelo da parte 3. ",
-      "id": "c6aa"
-    },
-    {
-      "id": "85df",
-      "idUser": "ad0f",
-      "title": "prova 1",
-      "ingredients": "prova 1",
-      "process": "prova 1"
+      "id": "c6aa",
+      "type": "Antipasti",
+      "bgColor": "bg-orange"
     },
     {
       "idUser": "1",
       "title": "Test 10",
       "ingredients": "Test 10",
       "process": "Test 10",
+      "type": "Dolci",
+      "bgColor": "bg-yellow-200",
       "id": "2ade"
     },
     {
-      "id": "a1cb",
+      "id": "7a5f",
       "idUser": "1",
-      "title": "lasagna",
-      "ingredients": "lasagna",
-      "process": "lasagna"
+      "title": "dsadasda",
+      "ingredients": "dsadsada",
+      "process": "dsdasda",
+      "type": "Bevande",
+      "bgColor": "bg-indigo"
     },
     {
-      "id": "9925",
+      "id": "b5c6",
+      "idUser": "1",
+      "title": "dsadsadsa",
+      "ingredients": "dsadsadsa",
+      "process": "dsadsada",
+      "type": "Speciali",
+      "bgColor": "bg-red-100"
+    },
+    {
+      "id": "2590",
+      "idUser": "ad0f",
+      "title": "prova 1",
+      "ingredients": "prova 1",
+      "process": "prova 1",
+      "type": "Contorni",
+      "bgColor": "bg-amber"
+    },
+    {
+      "id": "1129",
       "idUser": "7971",
       "title": "Test 1",
       "ingredients": "Test 1",
-      "process": "Test 1"
+      "process": "Test 1",
+      "type": "Vegani",
+      "bgColor": "bg-green"
     }
   ],
   "me": [
     {
-      "id": "7971",
-      "name": "Tester1",
-      "email": "tester1@gmail.com",
-      "password": "admin"
+      "id": "1",
+      "name": "Claudio Pasinelli",
+      "email": "claudio.pasinelli@nurale.it",
+      "password": "123456"
     }
   ]
 }

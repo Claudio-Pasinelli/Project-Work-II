@@ -31,8 +31,6 @@ const Form = () => {
     const hasErrors = await trigger();
 
     if (!hasErrors) {
-      // console.log({errors.});
-
       return hasErrors;
     }
 
@@ -46,7 +44,7 @@ const Form = () => {
 
   return (
     <FormProvider {...methods}>
-      <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-100 sm:rounded-3xl">
+      <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-200 sm:rounded-3xl">
         <h1 className="w-full h-fit bg-orange text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-t-3xl">
           SCRIVIMI UN MESSAGGIO
         </h1>
@@ -91,7 +89,7 @@ const Form = () => {
               text="Conferma"
               title="Conferma"
               iconColor="white"
-              backgroundColor="bg-yellow-100 hover:bg-yellow-50"
+              backgroundColor="bg-yellow-200 hover:bg-yellow-50"
               iconName="rightArrow"
               onClick={handleSendEmail}
             />

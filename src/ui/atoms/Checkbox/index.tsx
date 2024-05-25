@@ -35,7 +35,7 @@ export default function Checkbox({
         {label}
       </label>
       <div className="h-4 my-4">
-        <p className="text-red-50 text-xs">{error}</p>
+        <p className="text-red-100 text-xs">{error}</p>
       </div>
     </section>
   );

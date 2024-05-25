@@ -14,7 +14,7 @@ const A = ({ text, href, children, icon = false, className, ...rest }: Props) =>
     <a
       href={href}
       className={cn(
-        'w-fit place-self-center text-yellow-100 underline underline-offset-4',
+        'w-fit place-self-center text-yellow-200 underline underline-offset-4',
         icon ? 'bg-white rounded-full' : null,
         className ? className : null,
       )}

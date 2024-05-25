@@ -1,10 +1,11 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Input, InputPassword } from '../../../atoms';
+import { Button, Input, InputPassword, Loader } from '../../../atoms';
 import schema from '../validation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { User } from '../../../../utils';
+import { useNavigate } from 'react-router-dom';
 
 const defaultValues = {
   name: '',
@@ -25,6 +26,8 @@ const Form = () => {
   } = methods;
 
   const [userData, setUserData] = useState<User | null>(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleUpdateProfile = async () => {
     try {
@@ -39,10 +42,17 @@ const Form = () => {
         return;
       }
 
+      setLoading(true);
+
       const updatedUserData = getValues();
       await axios.patch(`http://localhost:4000/me/${userData.id}`, updatedUserData);
+      navigate(0);
     } catch (error) {
       console.error(error);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 250);
     }
   };
 
@@ -67,9 +77,13 @@ const Form = () => {
     fetchMe();
   }, [reset]);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <FormProvider {...methods}>
-      <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-100 sm:rounded-3xl">
+      <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-200 sm:rounded-3xl">
         <h1 className="w-full h-fit bg-orange text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-t-3xl">
           IMPOSTAZIONI PROFILO
         </h1>
@@ -115,7 +129,7 @@ const Form = () => {
               text="Conferma"
               title="Conferma"
               iconColor="white"
-              backgroundColor="bg-yellow-100 hover:bg-yellow-50"
+              backgroundColor="bg-yellow-200 hover:bg-yellow-50"
               iconName="rightArrow"
               onClick={handleUpdateProfile}
             />

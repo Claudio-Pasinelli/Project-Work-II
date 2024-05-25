@@ -28,7 +28,7 @@ export default function SearchInput({ name, containerClassName, error, ...rest }
       <IconSvg name="search" size={24} iconClassName="w-[12%]" />
       {error && (
         <div className="w-full mt-2">
-          <p className="text-red-600 border border-gray-200 text-xs text-center">{error}</p>
+          <p className="text-red-100-600 border border-gray-200 text-xs text-center">{error}</p>
         </div>
       )}
     </section>
