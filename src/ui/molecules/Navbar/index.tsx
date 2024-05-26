@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full h-20 min-h-28 flex justify-between items-center bg-yellow-200 py-2 px-4 shadow-xl">
       <section className="w-1/4 flex justify-start items-center">
-        <img src="logo.png" alt="logo" className="w-fit h-28" />
+        <img src="logo.png" alt="logo" className="w-36 h-36" />
         <h1 className="text-white font-bold">{pageName}</h1>
       </section>
       <section className="flex items-center">

@@ -3,6 +3,7 @@ export interface User {
   name: string;
   email: string;
   password: string;
+  recipes: Recipe[];
   // passwordConfirm?: string;
   // firstName: string;
   // lastName: string;
@@ -22,6 +23,7 @@ export interface Message {
 }
 export interface Recipe {
   id?: number;
+  idUser: string;
   title: string;
   ingredients: string;
   process: string;

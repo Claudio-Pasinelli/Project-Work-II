@@ -4,23 +4,26 @@ import { ROUTES, User } from '../../../utils';
 
 interface Props {
   userData: User | null;
-  isMe?: boolean;
+  isMe?: boolean | null;
 }
 
 const Avatar = ({ userData, isMe = false }: Props) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [meName, setMeName] = useState('');
+  const [meId, setMeId] = useState<string | undefined>(undefined);
 
-  const navigateToUserPage = (userId: string, isMe: boolean) => {
-    !isMe ? navigate(ROUTES.users + userId) : navigate(ROUTES.myRecipes); // DA RIVEDERE!!!!!
+  const navigateToUserPage = (userId: string, isMe: boolean | null) => {
+    if (isMe === true) {
+      navigate(ROUTES.myRecipes);
+    } else if (isMe === false && userId) {
+      navigate(`${ROUTES.users}/${userId}`);
+    }
   };
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        if (userData) {
+        if (userData && userData.id) {
           const nameParts = userData.name.split(' ');
           let initials = '';
           if (nameParts.length === 1) {
@@ -29,12 +32,10 @@ const Avatar = ({ userData, isMe = false }: Props) => {
             initials = nameParts.map((part: string) => part.charAt(0)).join('');
           }
           setUsername(initials.toUpperCase());
-          setIsLoggedIn(true);
-          setMeName(userData.name);
+          setMeId(userData.id);
         } else {
           setUsername('NR');
-          setIsLoggedIn(false);
-          setMeName('Non Registrato');
+          setMeId(undefined);
         }
       } catch (err) {
         console.error(err);
@@ -42,14 +43,12 @@ const Avatar = ({ userData, isMe = false }: Props) => {
     };
 
     fetchUser();
-  }, []);
+  }, [userData]);
 
   return (
     <figure
       className="size-11 flex bg-gray-50 border border-black rounded-full justify-center items-center cursor-pointer"
-      onClick={() => userData && userData.id && navigateToUserPage(userData.id, isMe)}
-      // eslint-disable-next-line quotes
-      title={isLoggedIn ? meName : "Non hai effettuato l'accesso"}>
+      onClick={() => meId && navigateToUserPage(meId, isMe)}>
       <p>{username}</p>
     </figure>
   );

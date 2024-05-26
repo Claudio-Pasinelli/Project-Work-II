@@ -11,7 +11,7 @@ export const ROUTES = {
   users: '/users:id',
 };
 
-export const RESEND_API_KEY = 're_YJf373dW_MpknFi27ddnCEKAM27iS4JNM';
+export const RESEND_API_KEY = 're_gRG23fRs_MUEnyJ7s2rwJ6V5pAWnU3pqH';
 
 export interface RecipesTypes {
   value: string;

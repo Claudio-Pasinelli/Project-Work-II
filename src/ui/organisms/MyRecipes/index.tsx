@@ -14,11 +14,15 @@ const MyRecipes = () => {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-  const [filterType, setFilterType] = useState<string | null>(null);
 
   const handleGetUserRecipes = async () => {
     try {
       const responseUser = await axios.get('http://localhost:4000/me');
+
+      if (!responseUser.data[0]) {
+        return navigate(ROUTES.home);
+      }
+
       const user = responseUser.data[0];
       setUserData(user);
 
@@ -79,7 +83,6 @@ const MyRecipes = () => {
   };
 
   const handleFilterChange = (selectedType: string) => {
-    setFilterType(selectedType);
     if (selectedType === 'Tutte') {
       setFilteredRecipesData(recipesData);
     } else {

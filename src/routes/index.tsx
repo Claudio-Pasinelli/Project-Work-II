@@ -10,6 +10,7 @@ import {
   ContactsPage,
   MyRecipesPage,
   MyRecipesFormPage,
+  OtherUserPage,
 } from '../ui';
 import SettingsPage from '../ui/pages/Settings';
 
@@ -24,6 +25,7 @@ const AppRoutes = () => {
           <Route path={ROUTES.settings} element={<SettingsPage />} />
           <Route path={ROUTES.myRecipes} element={<MyRecipesPage />} />
           <Route path={ROUTES.myRecipesForm + '/:id?'} element={<MyRecipesFormPage />} />
+          <Route path={`${ROUTES.users}/:userId`} element={<OtherUserPage />} />
           {/* </Route> */}
         </Route>
         <Route path={ROUTES.login} element={<LoginPage />} />

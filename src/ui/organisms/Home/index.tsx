@@ -1,61 +1,159 @@
+import { ChangeEvent, useEffect, useState } from 'react';
+import axios from 'axios';
+import { Button, DropdownFilter, Loader, SearchInput } from '../../atoms';
+import { useNavigate } from 'react-router-dom';
+import { RECIPES_TYPES, ROUTES, Recipe, User } from '../../../utils';
+import { Avatar } from '../../molecules';
+import { cn } from '../../../utils/helpers/tailwindMerge';
+
 const Home = () => {
+  const navigate = useNavigate();
+  const [users, setUsers] = useState<User[]>([]);
+  const [filteredRecipesData, setFilteredRecipesData] = useState<Recipe[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [meUser, setMeUser] = useState<User | null>(null);
+  const [recipesData, setRecipesData] = useState<Recipe[]>([]);
+
+  const handleGetMeUser = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/me');
+      setMeUser(response.data[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleGetUserRecipes = async () => {
+    try {
+      const responseUsers = await axios.get('http://localhost:4000/users');
+      const allUsers: User[] = responseUsers.data;
+      setUsers(allUsers);
+
+      await handleGetMeUser();
+
+      const allRecipesPromises = allUsers.map(async (user) => {
+        const responseRecipes = await axios.get(`http://localhost:4000/recipes?idUser=${user.id}`);
+        return responseRecipes.data;
+      });
+
+      const allRecipesResponses = await Promise.all(allRecipesPromises);
+      const allRecipes = allRecipesResponses.flatMap((recipes: Recipe[]) => recipes);
+      setRecipesData(allRecipes);
+
+      setFilteredRecipesData(allRecipes);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFilterChange = (selectedType: string) => {
+    let filteredData = [...recipesData];
+    if (selectedType !== 'Tutte') {
+      filteredData = filteredData.filter((recipe) => recipe.type === selectedType);
+    }
+    setFilteredRecipesData(filteredData);
+  };
+
+  const handleChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
+
+  useEffect(() => {
+    handleGetUserRecipes();
+  }, []);
+
+  useEffect(() => {
+    const filtered = recipesData.filter(
+      (recipe) =>
+        recipe.title.toLowerCase().includes(searchTerm) ||
+        recipe.ingredients.toLowerCase().includes(searchTerm) ||
+        recipe.process.toLowerCase().includes(searchTerm) ||
+        recipe.type.toLowerCase().includes(searchTerm),
+    );
+    setFilteredRecipesData(filtered);
+  }, [searchTerm, recipesData]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <article>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consequuntur eligendi ad,
-      fugiat perferendis alias iste. Cumque aliquam a perferendis natus mollitia, nihil architecto
-      laudantium, obcaecati facilis sint fugit facere. Lorem ipsum dolor sit amet consectetur,
-      adipisicing elit. Vero eligendi suscipit minima officiis aut a possimus, praesentium nostrum,
-      accusantium sit quasi beatae incidunt sequi et veritatis reiciendis mollitia corrupti! Quo.
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quod necessitatibus
-      inventore fuga aspernatur deleniti veritatis facere dolores, impedit corrupti voluptatum minus
-      nulla laudantium labore illum molestias repellat, ut architecto! Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Ipsa facilis maxime in, magni, veritatis dicta nobis eos
-      repellat ea rem velit magnam quod repellendus soluta, incidunt eaque? Consequuntur,
-      reprehenderit maxime! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro harum
-      voluptate ex, quisquam quod architecto natus quidem, dolore deserunt iste quis ea. Dolore
-      molestiae veritatis tempora? Quod optio eius eum! Lorem ipsum dolor sit amet, consectetur
-      adipisicing elit. Saepe molestias adipisci doloribus, veritatis hic corrupti totam! Ipsa iste
-      aperiam, voluptates in dicta nulla assumenda! Omnis sapiente cum totam iure provident. Lorem
-      ipsum dolor sit amet consectetur adipisicing elit. Pariatur sequi ipsum fuga temporibus odit
-      possimus voluptates veritatis suscipit animi, accusantium itaque excepturi cumque culpa
-      consequuntur ad dolore quidem, tenetur minima. Lorem ipsum dolor sit amet consectetur
-      adipisicing elit. Suscipit non iure, officia modi minus, deleniti ut dolores hic vel nesciunt
-      adipisci sed placeat dicta eum qui dignissimos eius molestiae. Asperiores. Lorem ipsum dolor
-      sit amet consectetur adipisicing elit. Dolorem, laboriosam suscipit velit porro obcaecati
-      soluta, quis, reprehenderit sequi ea quos earum. Ut veniam similique asperiores laudantium,
-      vero quisquam quidem eveniet! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro
-      repellendus eum iure vitae consectetur maiores neque totam praesentium beatae rerum, labore
-      exercitationem provident nobis temporibus omnis, saepe facilis esse ducimus? Lorem ipsum dolor
-      sit amet consectetur adipisicing elit. Nemo adipisci quaerat magni accusantium, nobis iusto ad
-      aspernatur tempora illo nulla provident aperiam voluptas suscipit deleniti, temporibus maxime
-      odit optio molestias. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus
-      incidunt esse ratione. Ad molestias qui tempora adipisci consequatur magni in magnam
-      voluptatum provident. Nihil quis, velit atque reiciendis perferendis hic. Lorem, ipsum dolor
-      sit amet consectetur adipisicing elit. Corporis dolor adipisci minus suscipit soluta, deleniti
-      molestiae provident sed consequuntur accusantium non ad consequatur quo excepturi sequi
-      laudantium quos asperiores deserunt. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Asperiores voluptatum soluta ea, ad nobis laborum natus neque vel dicta earum debitis, magni
-      ullam nisi, iusto consectetur totam alias vero sint. Lorem ipsum dolor sit, amet consectetur
-      adipisicing elit. Possimus in at tenetur eius odit exercitationem ex saepe reiciendis aliquid
-      adipisci, iste accusantium iure nisi inventore deleniti? Veritatis recusandae voluptates
-      asperiores? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti tenetur facilis
-      ad provident ipsum animi explicabo corrupti aliquid sit! Iste, molestiae sit. Quaerat
-      accusantium aliquam ducimus sint asperiores, soluta sequi? Lorem ipsum dolor sit amet
-      consectetur, adipisicing elit. Necessitatibus atque pariatur, tenetur nemo omnis ratione
-      provident sed dicta magnam maiores dignissimos quos. Tempore asperiores reiciendis fugit
-      dolorem! Asperiores, et quod! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Inventore amet dolorem, voluptas, ullam aliquid quidem dolor reiciendis nam deleniti sequi
-      sint cupiditate, similique consequuntur illo placeat alias recusandae labore adipisci? Lorem
-      ipsum dolor sit amet consectetur adipisicing elit. Molestias repellat optio iste sed dolorem
-      amet reprehenderit voluptatibus fugit est, voluptatem aliquid nesciunt, incidunt, non
-      similique eius. Nobis odio in soluta. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Dolores asperiores aliquid illum hic, praesentium modi cumque tempora pariatur vero soluta eum
-      eaque. Quas laboriosam quod amet tempora sequi? Asperiores, beatae. Lorem, ipsum dolor sit
-      amet consectetur adipisicing elit. Tenetur pariatur aperiam commodi repudiandae, nemo
-      obcaecati ea exercitationem illum iure cum dolor et? Labore aperiam porro aut animi at beatae
-      quasi. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem aliquid, totam
-      aspernatur voluptates porro veniam tempora magnam ad, repellendus enim non accusamus a
-      deleniti fugit eum pariatur? Ut, rem accusamus?
+    <article className="w-full h-fit flex justify-center items-center m-0 p-8 sm:py-16 sm:px-11">
+      <section className="w-full flex">
+        <section className="w-full">
+          <section className="w-full flex justify-end">
+            <SearchInput name="search" onChange={handleChangeSearch} />
+          </section>
+          <h1 className="text-4xl text-center mb-4 sm:mb-9">Consigliati del giorno</h1>
+          {users.length > 0 && (
+            <section
+              className={cn(
+                'grid justify-items-center gap-x-24 gap-y-12 w-full',
+                filteredRecipesData.length === 1
+                  ? 'grid-cols-1 sm:grid-cols-1'
+                  : filteredRecipesData.length === 2
+                    ? 'grid-cols-1 sm:grid-cols-2'
+                    : filteredRecipesData.length === 3
+                      ? 'grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                      : filteredRecipesData.length >= 4
+                        ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+                        : null,
+              )}>
+              {filteredRecipesData.length !== 0 ? (
+                filteredRecipesData.map((recipe, index) => {
+                  const userForRecipe = users.find((user) => user.id === recipe.idUser);
+                  return (
+                    <article
+                      className="max-w-64 min-w-52 h-full break-words transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64"
+                      key={recipe.title + index}>
+                      <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
+                        <article
+                          className={cn(
+                            'flex flex-col justify-between p-2 border-b border-gray-200 items-center rounded-t-3xl shadow-xl',
+                            recipe.bgColor,
+                          )}>
+                          <section className="w-full flex place-content-between">
+                            {userForRecipe ? (
+                              <Avatar
+                                userData={userForRecipe}
+                                isMe={meUser && userForRecipe.id === meUser.id}
+                              />
+                            ) : null}
+                          </section>
+                          <article className="text-center break-all">
+                            <h2 className="text-lg font-bold">{recipe.title}</h2>
+                            <p>Tipo: {recipe.type}</p>
+                          </article>
+                        </article>
+                        <article className="size-full flex flex-col justify-around p-2 overflow-auto">
+                          <section>
+                            <p className="font-bold">Ingredienti:</p>
+                            <p>{recipe.ingredients}</p>
+                          </section>
+                          <section>
+                            <p className="font-bold">Procedimento:</p>
+                            <p>{recipe.process}</p>
+                          </section>
+                        </article>
+                      </article>
+                    </article>
+                  );
+                })
+              ) : (
+                <p>Nessuna ricetta è stata trovata.</p>
+              )}
+            </section>
+          )}
+        </section>
+        <DropdownFilter
+          name="filter"
+          options={[{ id: 0, value: 'Tutte' }, ...RECIPES_TYPES]}
+          onOptionChange={handleFilterChange}
+        />
+      </section>
     </article>
   );
 };

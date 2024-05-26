@@ -21,66 +21,66 @@
   ],
   "recipes": [
     {
+      "id": "8380",
       "idUser": "1",
-      "title": "Lasagne",
-      "ingredients": "Semola di grano duro rimacinata 350 g Farina 00 150 g Spinaci 250 g Uova 2 Tuorli 3",
-      "process": "Per preparare le lasagne alla bolognese, iniziate dal ragù. Preparate il brodo vegetale che dovrete tenere in caldo. Poi prendete la pancetta, tagliatela prima a striscioline 1. Con un coltello o una mezzaluna sminuzzatela per bene 2. A parte preparate un trito fine con carote, cipolle, sedano e tenetelo da parte 3. ",
-      "id": "c6aa",
+      "title": "Claudio Pasinelli 1",
+      "ingredients": "Claudio Pasinelli 1",
+      "process": "Claudio Pasinelli 1",
       "type": "Antipasti",
       "bgColor": "bg-orange"
     },
     {
+      "id": "2795",
       "idUser": "1",
-      "title": "Test 10",
-      "ingredients": "Test 10",
-      "process": "Test 10",
-      "type": "Dolci",
-      "bgColor": "bg-yellow-200",
-      "id": "2ade"
+      "title": "Claudio Pasinelli 2",
+      "ingredients": "Claudio Pasinelli 2",
+      "process": "Claudio Pasinelli 2",
+      "type": "Primi",
+      "bgColor": "bg-lightblue"
     },
     {
-      "id": "7a5f",
-      "idUser": "1",
-      "title": "dsadasda",
-      "ingredients": "dsadsada",
-      "process": "dsdasda",
-      "type": "Bevande",
-      "bgColor": "bg-indigo"
-    },
-    {
-      "id": "b5c6",
-      "idUser": "1",
-      "title": "dsadsadsa",
-      "ingredients": "dsadsadsa",
-      "process": "dsadsada",
-      "type": "Speciali",
-      "bgColor": "bg-red-100"
-    },
-    {
-      "id": "2590",
+      "id": "bf52",
       "idUser": "ad0f",
-      "title": "prova 1",
-      "ingredients": "prova 1",
-      "process": "prova 1",
+      "title": "Francesco Rossi 1",
+      "ingredients": "Francesco Rossi 1",
+      "process": "Francesco Rossi 1",
+      "type": "Secondi",
+      "bgColor": "bg-pink"
+    },
+    {
+      "id": "76ba",
+      "idUser": "ad0f",
+      "title": "Francesco Rossi 2",
+      "ingredients": "Francesco Rossi 2",
+      "process": "Francesco Rossi 2",
       "type": "Contorni",
       "bgColor": "bg-amber"
     },
     {
-      "id": "1129",
       "idUser": "7971",
-      "title": "Test 1",
-      "ingredients": "Test 1",
-      "process": "Test 1",
-      "type": "Vegani",
-      "bgColor": "bg-green"
+      "title": "Tester 1 Test 1",
+      "ingredients": "Tester 1 Test 1",
+      "process": "Tester 1 Test 1",
+      "type": "Bevande",
+      "bgColor": "bg-indigo",
+      "id": "adfc"
+    },
+    {
+      "idUser": "7971",
+      "title": "Tester 1 Test 2",
+      "ingredients": "Tester 1 Test 2",
+      "process": "Tester 1 Test 2",
+      "type": "Dolci",
+      "bgColor": "bg-yellow-200",
+      "id": "4360"
     }
   ],
   "me": [
     {
-      "id": "1",
-      "name": "Claudio Pasinelli",
-      "email": "claudio.pasinelli@nurale.it",
-      "password": "123456"
+      "id": "7971",
+      "name": "Tester1",
+      "email": "tester1@gmail.com",
+      "password": "admin"
     }
   ]
 }
