@@ -1,7 +1,8 @@
 export const ROUTES = {
   home: '/',
   signIn: '/sign-in',
-  recuperoPassword: '/password-recovery',
+  passwordRecovery: '/password-recovery',
+  passwordRecoveryConfirm: '/password-recovery/confirm',
   login: '/login',
   contacts: '/contacts',
   profile: '/profile',

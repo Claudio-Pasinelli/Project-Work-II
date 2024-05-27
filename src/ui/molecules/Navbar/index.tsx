@@ -2,6 +2,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { cn } from '../../../utils/helpers/tailwindMerge';
 import { ROUTES } from '../../../utils';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import AvatarNavBar from '../AvatarNavBar';
 
 const Navbar = () => {
@@ -9,12 +10,28 @@ const Navbar = () => {
   const params = useParams();
 
   const [pageName, setPageName] = useState('');
+  const [isUserRegistered, setIsUserRegistered] = useState(false);
+
+  const checkUserRegistration = async () => {
+    try {
+      const res = await axios.get('http://localhost:4000/me');
+      if (res.data.length > 0) {
+        setIsUserRegistered(true);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    checkUserRegistration();
+  }, []);
 
   useEffect(() => {
     if (location.pathname === ROUTES.home || location.pathname === '') {
       setPageName('HOME');
     } else if (location.pathname === ROUTES.contacts) {
-      setPageName('CONTATTACI');
+      setPageName('CONTATTAMI');
     } else if (location.pathname === ROUTES.profile) {
       setPageName('PROFILO');
     } else if (location.pathname === ROUTES.myRecipes) {
@@ -34,13 +51,18 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 w-full h-20 min-h-28 flex justify-between items-center bg-yellow-200 py-2 px-4 shadow-xl">
-      <section className="w-1/4 flex justify-start items-center">
-        <img src="logo.png" alt="logo" className="w-36 h-36" />
+      <section className="w-full flex justify-start items-center">
+        <img
+          src="logo.png"
+          alt="Logo Ricette della Nonna"
+          className="w-48 h-auto my-auto transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1"
+        />
+
         <h1 className="text-white font-bold">{pageName}</h1>
       </section>
       <section className="flex items-center">
-        <div className="border-l-2 border-black-50 flex flex-col items-start mr-8 pl-8">
-          <section className="w-full flex justify-end">
+        <div className="border-0 border-none flex flex-col items-start mr-8 pl-8 sm:border-l-2 sm:border-black-50">
+          <section className="w-full flex justify-end items-center">
             {location.pathname !== '/' && (
               <Link
                 to="/"
@@ -62,10 +84,10 @@ const Navbar = () => {
                     ? 'bg-black-50 p-2 rounded-2xl'
                     : 'bg-none p-0 rounded-none',
                 )}>
-                Contattaci
+                Contattami
               </Link>
             )}
-            {location.pathname !== '/my-recipes' && (
+            {isUserRegistered && location.pathname !== '/my-recipes' && (
               <Link
                 to="/my-recipes"
                 className={cn(

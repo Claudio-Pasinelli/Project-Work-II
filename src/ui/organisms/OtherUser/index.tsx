@@ -87,7 +87,7 @@ const OtherUser = () => {
               {filteredRecipesData.length !== 0 ? (
                 filteredRecipesData.map((recipe, index) => (
                   <article
-                    className="max-w-64 min-w-52 h-full break-words transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64"
+                    className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64 sm:break-words"
                     key={recipe.title + index}>
                     <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
                       <article
@@ -98,7 +98,7 @@ const OtherUser = () => {
                         <section className="w-full flex place-content-between">
                           <Avatar userData={userData} isMe={false} />
                         </section>
-                        <article className="text-center break-all">
+                        <article className="text-center break-all sm:break-words">
                           <h2 className="text-lg font-bold">{recipe.title}</h2>
                           <p>Tipo: {recipe.type}</p>
                         </article>

@@ -6,7 +6,7 @@ import {
   LoginPage,
   SignInPage,
   PasswordRecoveryPage,
-  // RequireAuth,
+  PasswordRecoveryConfirmPage,
   ContactsPage,
   MyRecipesPage,
   MyRecipesFormPage,
@@ -19,18 +19,17 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          {/* <Route element={<RequireAuth />}> */}
           <Route path={ROUTES.home} element={<HomePage />} />
           <Route path={ROUTES.contacts} element={<ContactsPage />} />
           <Route path={ROUTES.settings} element={<SettingsPage />} />
           <Route path={ROUTES.myRecipes} element={<MyRecipesPage />} />
           <Route path={ROUTES.myRecipesForm + '/:id?'} element={<MyRecipesFormPage />} />
           <Route path={`${ROUTES.users}/:userId`} element={<OtherUserPage />} />
-          {/* </Route> */}
         </Route>
         <Route path={ROUTES.login} element={<LoginPage />} />
         <Route path={ROUTES.signIn} element={<SignInPage />} />
-        <Route path={ROUTES.recuperoPassword} element={<PasswordRecoveryPage />} />
+        <Route path={ROUTES.passwordRecovery} element={<PasswordRecoveryPage />} />
+        <Route path={ROUTES.passwordRecoveryConfirm} element={<PasswordRecoveryConfirmPage />} />
       </Routes>
     </BrowserRouter>
   );

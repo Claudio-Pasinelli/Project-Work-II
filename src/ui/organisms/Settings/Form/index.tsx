@@ -4,7 +4,7 @@ import { Button, Input, InputPassword, Loader } from '../../../atoms';
 import schema from '../validation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { User } from '../../../../utils';
+import { ROUTES, User } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
 
 const defaultValues = {
@@ -43,10 +43,11 @@ const Form = () => {
       }
 
       setLoading(true);
-
       const updatedUserData = getValues();
-      await axios.patch(`http://localhost:4000/me/${userData.id}`, updatedUserData);
-      navigate(0);
+      await axios.put(`http://localhost:4000/me/${userData.id}`, updatedUserData);
+      await axios.put(`http://localhost:4000/users/${userData.id}`, updatedUserData);
+
+      navigate(ROUTES.home);
     } catch (error) {
       console.error(error);
     } finally {
@@ -60,20 +61,21 @@ const Form = () => {
     reset(defaultValues);
   };
 
-  useEffect(() => {
-    const fetchMe = async () => {
-      try {
-        const res = await axios.get('http://localhost:4000/me');
-        const meData = res.data[0];
-        if (meData) {
-          setUserData(meData);
-          reset(meData);
-        }
-      } catch (err) {
-        console.error(err);
+  const fetchMe = async () => {
+    try {
+      const res = await axios.get('http://localhost:4000/me');
+      const meData = res.data[0];
+      if (meData) {
+        setUserData(meData);
+        return reset(meData);
       }
-    };
+      return navigate(ROUTES.home);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
+  useEffect(() => {
     fetchMe();
   }, [reset]);
 

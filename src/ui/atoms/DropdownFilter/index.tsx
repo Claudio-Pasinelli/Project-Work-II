@@ -19,7 +19,7 @@ const DropdownFilter = ({ name, placeholder, options, error, onOptionChange, ...
 
   useOnClickOutside(ref, () => setOpen(false));
   return (
-    <section className="w-40 flex flex-col relative ml-8 sm:ml-12 md:ml-14 lg:ml-16">
+    <section className="w-40 ml-0 flex flex-col relative sm:ml-12 md:ml-14 lg:ml-16">
       <div onClick={() => setOpen(!open)} role="button" tabIndex={0} ref={ref}>
         <div className="flex flex-col rounded-full">
           <div

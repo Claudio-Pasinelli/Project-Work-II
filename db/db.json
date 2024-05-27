@@ -73,14 +73,23 @@
       "type": "Dolci",
       "bgColor": "bg-yellow-200",
       "id": "4360"
+    },
+    {
+      "id": "6cb6",
+      "idUser": "1",
+      "title": "Test Antipasti",
+      "ingredients": "Test Antipasti",
+      "process": "Test Antipasti",
+      "type": "Antipasti",
+      "bgColor": "bg-orange"
     }
   ],
   "me": [
     {
-      "id": "7971",
-      "name": "Tester1",
-      "email": "tester1@gmail.com",
-      "password": "admin"
+      "id": "1",
+      "name": "Claudio Pasinelli",
+      "email": "claudio.pasinelli@nurale.it",
+      "password": "123456"
     }
   ]
 }

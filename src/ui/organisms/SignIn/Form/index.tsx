@@ -143,7 +143,7 @@ const Form = () => {
             />
           </section>
           <article className="w-full text-center my-8">
-            <A href="/login" text="Hai già un account?" />
+            <A href={ROUTES.login} text="Hai già un account?" />
           </article>
         </article>
       </section>

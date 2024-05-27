@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Form from './Form';
 
-const PasswordRecovery = () => {
+const PasswordRecoveryConfirm = () => {
   const [currentImage, setCurrentImage] = useState<number>(0);
   const images: string[] = ['images/pages/login/login1.jpg', 'images/pages/login/login2.jpg'];
 
@@ -25,4 +25,4 @@ const PasswordRecovery = () => {
   );
 };
 
-export default PasswordRecovery;
+export default PasswordRecoveryConfirm;

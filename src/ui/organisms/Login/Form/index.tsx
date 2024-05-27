@@ -125,8 +125,8 @@ const Form = () => {
             />
           </section>
           <article className="w-full text-center grid grid-cols-1 gap-6 my-8">
-            <A href="/sign-in" text="Non hai un account?" />
-            <A href="/password-recovery" text="Hai dimenticato la password?" />
+            <A href={ROUTES.signIn} text="Non hai un account?" />
+            <A href={ROUTES.passwordRecovery} text="Hai dimenticato la password?" />
           </article>
         </article>
       </section>

@@ -1,4 +1,6 @@
 import { A } from '..';
+import { FOOTER_LINKS } from '../../../utils/data';
+import { FooterLink } from '../../molecules';
 
 const Footer = () => {
   return (
@@ -10,39 +12,17 @@ const Footer = () => {
         </article>
       </section>
       <section className="flex flex-row items-center justify-between border-solid px-12 gap-12 sm:border-gray-100 sm:border-l-2 sm:pl-24 md:px-4 md:gap-4 md:pl-8 lg:pl-16">
-        <figure className="w-10 h-fit p-1 border border-black rounded-full bg-white">
-          <A
-            href="https://www.linkedin.com/in/claudio-pasinelli-599503266/"
-            target="_blank"
-            icon={true}>
-            <img
-              src="/images/socials/linkedin.webp"
-              alt="logo linkedin"
-              className="size-full"
-              title="Link al mio account Linkedin"
-            />
-          </A>
-        </figure>
-        <figure className="w-10 h-fit p-1 border border-black rounded-full bg-white">
-          <A href="https://twitter.com/ClaudioPasinel1" target="_blank" icon={true}>
-            <img
-              src="/images/socials/twitter.webp"
-              alt="logo twitter"
-              className="size-full"
-              title="Link al mio account Twitter"
-            />
-          </A>
-        </figure>
-        <figure className="w-10 h-fit p-1 border border-black rounded-full bg-white">
-          <A href="https://github.com/Claudio-Pasinelli" target="_blank" icon={true}>
-            <img
-              src="/images/socials/github.webp"
-              alt="logo github"
-              className="size-full"
-              title="Link al mio account GitHub"
-            />
-          </A>
-        </figure>
+        {FOOTER_LINKS.map((link) => (
+          <FooterLink
+            key={link.title + link.alt}
+            classNameContainer={link.classNameContainer}
+            href={link.href}
+            src={link.src}
+            alt={link.alt}
+            classNameElement={link.classNameElement}
+            title={link.title}
+          />
+        ))}
       </section>
     </footer>
   );

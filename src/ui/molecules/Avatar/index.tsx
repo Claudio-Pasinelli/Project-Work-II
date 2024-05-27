@@ -20,28 +20,28 @@ const Avatar = ({ userData, isMe = false }: Props) => {
     }
   };
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        if (userData && userData.id) {
-          const nameParts = userData.name.split(' ');
-          let initials = '';
-          if (nameParts.length === 1) {
-            initials = nameParts[0].charAt(0) + nameParts[0].charAt(nameParts[0].length - 1);
-          } else {
-            initials = nameParts.map((part: string) => part.charAt(0)).join('');
-          }
-          setUsername(initials.toUpperCase());
-          setMeId(userData.id);
+  const fetchUser = async () => {
+    try {
+      if (userData && userData.id) {
+        const nameParts = userData.name.split(' ');
+        let initials = '';
+        if (nameParts.length === 1) {
+          initials = nameParts[0].charAt(0) + nameParts[0].charAt(nameParts[0].length - 1);
         } else {
-          setUsername('NR');
-          setMeId(undefined);
+          initials = nameParts.map((part: string) => part.charAt(0)).join('');
         }
-      } catch (err) {
-        console.error(err);
+        setUsername(initials.toUpperCase());
+        setMeId(userData.id);
+      } else {
+        setUsername('NR');
+        setMeId(undefined);
       }
-    };
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
+  useEffect(() => {
     fetchUser();
   }, [userData]);
 

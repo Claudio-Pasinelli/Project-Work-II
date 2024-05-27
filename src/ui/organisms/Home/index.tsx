@@ -1,13 +1,11 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, DropdownFilter, Loader, SearchInput } from '../../atoms';
-import { useNavigate } from 'react-router-dom';
-import { RECIPES_TYPES, ROUTES, Recipe, User } from '../../../utils';
+import { DropdownFilter, Loader, SearchInput } from '../../atoms';
+import { RECIPES_TYPES, Recipe, User } from '../../../utils';
 import { Avatar } from '../../molecules';
 import { cn } from '../../../utils/helpers/tailwindMerge';
 
 const Home = () => {
-  const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
   const [filteredRecipesData, setFilteredRecipesData] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(true);
@@ -107,7 +105,7 @@ const Home = () => {
                   const userForRecipe = users.find((user) => user.id === recipe.idUser);
                   return (
                     <article
-                      className="max-w-64 min-w-52 h-full break-words transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64"
+                      className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64 sm:break-words"
                       key={recipe.title + index}>
                       <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
                         <article
@@ -123,7 +121,7 @@ const Home = () => {
                               />
                             ) : null}
                           </section>
-                          <article className="text-center break-all">
+                          <article className="text-center break-all sm:break-words">
                             <h2 className="text-lg font-bold">{recipe.title}</h2>
                             <p>Tipo: {recipe.type}</p>
                           </article>

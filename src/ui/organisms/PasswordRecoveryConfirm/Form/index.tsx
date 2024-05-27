@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Input, A } from '../../../atoms';
+import { Button, A, InputPassword } from '../../../atoms';
 import schema from '../validation';
 import { ROUTES, User } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,8 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 const defaultValues = {
-  email: '',
+  password: '',
+  confirmPassword: '',
 };
 
 const Form = () => {
@@ -33,18 +34,24 @@ const Form = () => {
       return hasErrors;
     }
 
-    try {
-      const res = await axios.get('http://localhost:4000/users');
-      const users: User[] = res.data;
+    const password = getValues('password');
+    const confirmPassword = getValues('confirmPassword');
 
-      const user = users.find((user) => user.email === getValues('email'));
+    if (password !== confirmPassword) {
+      setError('confirmPassword', { message: 'Le due password non corrispondono.' });
+      return;
+    }
+
+    try {
+      const res = await axios.get('http://localhost:4000/me');
+      const user = res.data[0];
 
       if (user) {
-        await axios.post('http://localhost:4000/me', user);
+        await axios.put(`http://localhost:4000/users/${user.id}`, { ...user, password });
         handleReset();
-        return navigate(ROUTES.passwordRecoveryConfirm);
+        return navigate(ROUTES.login);
       } else {
-        setError('email', { message: 'Email non trovata.' });
+        setError('email', { message: 'Utente non trovato.' });
       }
     } catch (err) {
       console.error(err);
@@ -55,25 +62,8 @@ const Form = () => {
     reset(defaultValues);
   };
 
-  const handleLogout = async () => {
-    try {
-      const res = await axios.get('http://localhost:4000/me');
-      const meDataArray: User[] = res.data;
-
-      if (meDataArray.length > 0) {
-        for (const meData of meDataArray) {
-          await axios.delete(`http://localhost:4000/me/${meData.id}`);
-        }
-        console.log('Tutti gli elementi in "me" sono stati eliminati');
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   useEffect(() => {
     handleReset();
-    handleLogout();
   }, []);
 
   return (
@@ -84,12 +74,19 @@ const Form = () => {
         </h1>
         <article className="w-3/4 flex flex-col my-5 p-4 items-center bg-gray-50 rounded-3xl shadow-xl sm:m-7 sm:w-fit sm:p-8">
           <section className="w-full">
-            <Input
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="Inserisci la tua email"
-              error={errors?.email?.message}
+            <InputPassword
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Inserisci la tua password"
+              error={errors?.password?.message}
+            />
+            <InputPassword
+              label="Conferma Password"
+              name="confirmPassword"
+              type="password"
+              placeholder="Riscrivi la tua password"
+              error={errors?.confirmPassword?.message}
             />
           </section>
           <section className="w-full grid grid-cols-1 gap-7 place-items-center sm:grid-cols-2">
