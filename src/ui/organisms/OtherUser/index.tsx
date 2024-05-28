@@ -62,72 +62,83 @@ const OtherUser = () => {
   }
 
   return (
-    <article className="w-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
-      <section className="w-full flex">
-        <section className="w-full">
-          <section className="w-full flex justify-end">
-            <SearchInput name="search" onChange={handleChangeSearch} />
+    <article className="size-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
+      <section className="w-full flex flex-col-reverse items-center md:flex-row">
+        <section className="w-full flex flex-col">
+          <section className="w-full mb-4 flex flex-col items-center">
+            <h1 className="text-4xl text-center items-center mb-4 sm:mb-9">
+              Le ricette di {userData?.name}
+            </h1>
+            <SearchInput
+              name="search"
+              onChange={handleChangeSearch}
+              containerClassName="m-4 sm:m-0"
+            />
           </section>
-          <h1 className="text-4xl text-center mb-4 sm:mb-9">Le ricette di {userData?.name}</h1>
-          {userData && (
-            <section
-              className={cn(
-                'grid justify-items-center gap-x-24 gap-y-12 w-full',
-                filteredRecipesData.length === 1
-                  ? 'grid-cols-1 sm:grid-cols-1'
-                  : filteredRecipesData.length === 2
-                    ? 'grid-cols-1 sm:grid-cols-2'
-                    : filteredRecipesData.length === 3
-                      ? 'grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-                      : filteredRecipesData.length >= 4
-                        ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-                        : null,
-              )}>
-              {filteredRecipesData.length !== 0 ? (
-                filteredRecipesData.map((recipe, index) => (
-                  <article
-                    className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:-translate-y-1 sm:w-64 sm:break-words"
-                    key={recipe.title + index}>
-                    <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
-                      <article
-                        className={cn(
-                          'flex flex-col justify-between p-2 border-b border-gray-200 items-center rounded-t-3xl shadow-xl',
-                          recipe.bgColor,
-                        )}>
-                        <section className="w-full flex place-content-between">
-                          <Avatar userData={userData} isMe={false} />
-                        </section>
-                        <article className="w-full m-1 text-center break-keep">
-                          <h2 className="font-bold break-words">
-                            <b>{recipe.title}</b>
-                          </h2>
-                          <p>Tipo: {recipe.type}</p>
-                        </article>
-                      </article>
-                      <article className="size-full flex flex-col justify-around p-2 overflow-auto">
-                        <section className="m-1">
-                          <p className={cn('font-bold', recipe.sectionsColor)}>Ingredienti:</p>
-                          <p>{recipe.ingredients}</p>
-                        </section>
-                        <section className="m-1">
-                          <p className={cn('font-bold', recipe.sectionsColor)}>Procedimento:</p>
-                          <p>{recipe.process}</p>
-                        </section>
+          <section
+            className={cn(
+              'grid gap-8 justify-items-center w-full',
+              'justify-items-center gap-x-24 gap-y-12 w-full',
+              filteredRecipesData.length === 1
+                ? 'grid-cols-1 sm:grid-cols-1'
+                : filteredRecipesData.length === 2
+                  ? 'grid-cols-1 sm:grid-cols-2'
+                  : filteredRecipesData.length === 3
+                    ? 'grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                    : filteredRecipesData.length >= 4
+                      ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+                      : null,
+            )}>
+            {filteredRecipesData.length !== 0 ? (
+              filteredRecipesData.map((recipe, index) => (
+                <article
+                  className="w-64 h-[26.25rem] break-all transform transition duration-300 hover:-translate-y-1 max-w-xs"
+                  key={recipe.title + index}>
+                  <article className="w-full h-full flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
+                    <article
+                      className={cn(
+                        'flex flex-col justify-between p-2 border-b border-gray-200 items-center rounded-t-3xl shadow-xl',
+                        recipe.bgColor,
+                      )}>
+                      <section className="w-full flex place-content-between">
+                        <Avatar
+                          userData={userData}
+                          isMe={false}
+                          title={`Profilo di ${userData?.name}`}
+                        />
+                      </section>
+                      <article className="w-full m-1 text-center break-keep">
+                        <h2 className="font-bold break-words">
+                          <b>{recipe.title}</b>
+                        </h2>
+                        <p>Tipo: {recipe.type}</p>
                       </article>
                     </article>
+                    <article className="size-full flex flex-col justify-around p-2 overflow-auto">
+                      <section className="m-1">
+                        <p className={cn('font-bold', recipe.sectionsColor)}>Ingredienti:</p>
+                        <p>{recipe.ingredients}</p>
+                      </section>
+                      <section className="m-1">
+                        <p className={cn('font-bold', recipe.sectionsColor)}>Procedimento:</p>
+                        <p>{recipe.process}</p>
+                      </section>
+                    </article>
                   </article>
-                ))
-              ) : (
-                <p>Nessuna ricetta è stata trovata.</p>
-              )}
-            </section>
-          )}
+                </article>
+              ))
+            ) : (
+              <p>Nessuna ricetta è stata trovata.</p>
+            )}
+          </section>
         </section>
-        <DropdownFilter
-          name="filter"
-          options={[{ id: 0, value: 'Tutte' }, ...RECIPES_TYPES]}
-          onOptionChange={handleFilterChange}
-        />
+        <aside className="w-auto sm:ml-4">
+          <DropdownFilter
+            name="filter"
+            options={[{ id: 0, value: 'Tutte' }, ...RECIPES_TYPES]}
+            onOptionChange={handleFilterChange}
+          />
+        </aside>
       </section>
     </article>
   );

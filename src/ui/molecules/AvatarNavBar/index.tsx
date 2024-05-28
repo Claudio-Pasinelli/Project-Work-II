@@ -49,7 +49,7 @@ const AvatarNavBar = () => {
   return (
     <div className="relative">
       <figure
-        className="size-11 flex bg-gray-50 border border-black rounded-full justify-center items-center cursor-pointer"
+        className="size-11 flex bg-gray-50 border border-black rounded-full justify-center items-center cursor-pointer shadow-xl"
         onClick={() => setOpen(true)}
         // eslint-disable-next-line quotes
         title={isLoggedIn ? meName : "Non hai effettuato l'accesso"}>

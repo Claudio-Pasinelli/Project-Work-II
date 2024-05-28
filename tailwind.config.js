@@ -38,13 +38,13 @@ module.exports = {
       red: {
         50: '#fca5a5',
         100: '#FF2323',
-        200: '#D90000', // nuovo
+        200: '#D90000',
       },
       yellow: {
         50: '#FFE500',
         100:'#fde047',
         200: '#FFD700',
-        300: '#BFAD00', // nuovo
+        300: '#BFAD00',
       },
       orange: {
         50:'#FFB800',

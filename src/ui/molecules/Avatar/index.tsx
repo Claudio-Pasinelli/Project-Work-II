@@ -5,9 +5,10 @@ import { ROUTES, User } from '../../../utils';
 interface Props {
   userData: User | null;
   isMe?: boolean | null;
+  title?: string | undefined;
 }
 
-const Avatar = ({ userData, isMe = false }: Props) => {
+const Avatar = ({ userData, isMe = false, title }: Props) => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [meId, setMeId] = useState<string | undefined>(undefined);
@@ -47,8 +48,9 @@ const Avatar = ({ userData, isMe = false }: Props) => {
 
   return (
     <figure
-      className="size-11 flex bg-gray-50 border border-black rounded-full justify-center items-center cursor-pointer"
-      onClick={() => meId && navigateToUserPage(meId, isMe)}>
+      className="size-11 flex bg-gray-50 border border-black rounded-full justify-center items-center cursor-pointer shadow-xl"
+      onClick={() => meId && navigateToUserPage(meId, isMe)}
+      title={title ? title : undefined}>
       <p>{username}</p>
     </figure>
   );

@@ -8,18 +8,17 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   placeholder?: string;
   options: Array<RecipesTypes>;
-  error?: string | null;
   onOptionChange?: (selectedType: string) => void;
 }
 
-const DropdownFilter = ({ name, placeholder, options, error, onOptionChange, ...rest }: Props) => {
+const DropdownFilter = ({ name, placeholder, options, onOptionChange, ...rest }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState(options[0].value ?? '');
 
   useOnClickOutside(ref, () => setOpen(false));
   return (
-    <section className="w-40 ml-0 flex flex-col relative sm:ml-12 md:ml-14 lg:ml-16">
+    <section className="w-40 flex flex-col relative self-center sm:self-baseline">
       <div onClick={() => setOpen(!open)} role="button" tabIndex={0} ref={ref}>
         <div className="flex flex-col rounded-full">
           <div
@@ -73,10 +72,6 @@ const DropdownFilter = ({ name, placeholder, options, error, onOptionChange, ...
               </li>
             ))}
           </ul>
-        </div>
-
-        <div className="h-4 my-4">
-          <p className="text-red-100 text-xs">{error}</p>
         </div>
       </div>
     </section>

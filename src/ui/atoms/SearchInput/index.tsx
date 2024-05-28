@@ -1,6 +1,5 @@
 import { InputHTMLAttributes } from 'react';
 import { cn } from '../../../utils/helpers/tailwindMerge';
-import Button from '../Button';
 import IconSvg from '../IconSVG';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -13,7 +12,7 @@ export default function SearchInput({ name, containerClassName, error, ...rest }
   return (
     <section
       className={cn(
-        'w-80 h-10 flex items-center border border-gray-300 bg-white rounded-3xl',
+        'w-80 h-10 flex items-center border border-gray-300 bg-white rounded-3xl shadow-xl',
         containerClassName,
       )}>
       <input

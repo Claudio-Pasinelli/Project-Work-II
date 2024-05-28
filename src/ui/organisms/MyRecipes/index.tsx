@@ -100,27 +100,37 @@ const MyRecipes = () => {
   }
 
   return (
-    <article className="w-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
-      <section className="w-full flex">
-        <section className="w-full">
-          <section className="w-full flex justify-end">
-            <SearchInput name="search" onChange={handleChangeSearch} />
-          </section>
-          <section className="w-full flex flex-col justify-between items-center mb-4 sm:flex-row sm:mb-9">
-            <h1 className="text-4xl flex-grow text-center">Le mie ricette</h1>
-            <Button
-              title="Crea una ricetta"
-              textColor="text-black"
-              text="Nuovo"
-              iconName="new"
-              className="!w-28 !h-9 border border-gray-200 shadow-xl"
-              onClick={() => navigate(ROUTES.myRecipesForm)}
+    <article className="size-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
+      <section className="w-full flex flex-col-reverse items-center md:flex-row">
+        <section className="w-full flex flex-col">
+          <section className="w-full mb-4 flex flex-col items-center">
+            <h1 className="text-4xl text-center mb-4 sm:mb-9">Le mie ricette</h1>
+            <SearchInput
+              name="search"
+              onChange={handleChangeSearch}
+              containerClassName="mx-4 mb-4"
             />
+            <section className="w-full flex justify-evenly items-center mb-4 sm:flex-row sm:mb-9">
+              <DropdownFilter
+                name="filter"
+                options={[{ id: 0, value: 'Tutte' }, ...RECIPES_TYPES]}
+                onOptionChange={handleFilterChange}
+              />
+              <Button
+                title="Crea una ricetta"
+                textColor="text-black"
+                text="Nuovo"
+                iconName="new"
+                className="!w-28 !h-9 border border-gray-200 shadow-xl"
+                onClick={() => navigate(ROUTES.myRecipesForm)}
+              />
+            </section>
           </section>
           {userData && (
             <section
               className={cn(
-                'grid justify-items-center gap-x-24 gap-y-12 w-full',
+                'grid gap-8 justify-items-center w-full',
+                'justify-items-center gap-x-24 gap-y-12 w-full',
                 filteredRecipesData.length === 1
                   ? 'grid-cols-1 sm:grid-cols-1'
                   : filteredRecipesData.length === 2
@@ -147,13 +157,13 @@ const MyRecipes = () => {
                           <section className="w-1/3 flex justify-between">
                             <Button
                               iconName="delete"
-                              className="!w-8 !min-w-8 !p-0"
+                              className="!w-8 !min-w-8 !p-0 shadow-xl"
                               title={`Elimina ${recipe.title}`}
                               onClick={() => handleSelectRecipe(recipe)}
                             />
                             <Button
                               iconName="edit"
-                              className="!w-8 !min-w-8 !p-0"
+                              className="!w-8 !min-w-8 !p-0 shadow-xl"
                               title={`Modifica ${recipe.title}`}
                               onClick={() => handleEdit(recipe.id)}
                             />
@@ -228,11 +238,6 @@ const MyRecipes = () => {
             </section>
           )}
         </section>
-        <DropdownFilter
-          name="filter"
-          options={[{ id: 0, value: 'Tutte' }, ...RECIPES_TYPES]}
-          onOptionChange={handleFilterChange}
-        />
       </section>
     </article>
   );
