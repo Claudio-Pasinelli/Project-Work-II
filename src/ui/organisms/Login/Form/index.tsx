@@ -84,7 +84,7 @@ const Form = () => {
   return (
     <FormProvider {...methods}>
       <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-200 sm:rounded-r-3xl sm:rounded-bl-none">
-        <h1 className="w-full h-20 bg-orange text-4xl text-center text-white content-center text-5xl rounded-t-3xl shadow-xl sm:rounded-tr-3xl sm:rounded-tl-none">
+        <h1 className="w-full h-20 bg-orange-50 text-4xl text-center text-white content-center text-5xl rounded-t-3xl shadow-xl sm:rounded-tr-3xl sm:rounded-tl-none">
           LOGIN
         </h1>
         <article className="w-3/4 flex flex-col my-5 p-4 items-center bg-gray-50 rounded-3xl shadow-xl sm:m-7 sm:w-fit sm:p-8">

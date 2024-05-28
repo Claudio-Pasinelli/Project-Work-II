@@ -100,7 +100,7 @@ const MyRecipes = () => {
   }
 
   return (
-    <article className="w-full h-fit flex justify-center items-center m-0 p-8 sm:py-16 sm:px-11">
+    <article className="w-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
       <section className="w-full flex">
         <section className="w-full">
           <section className="w-full flex justify-end">
@@ -134,7 +134,7 @@ const MyRecipes = () => {
               {filteredRecipesData.length != 0 ? (
                 filteredRecipesData.map((recipe, index) => (
                   <article
-                    className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64 sm:break-words"
+                    className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:-translate-y-1 sm:w-64 sm:break-words"
                     key={recipe.title + index}>
                     <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
                       <article
@@ -159,18 +159,24 @@ const MyRecipes = () => {
                             />
                           </section>
                         </section>
-                        <article className="text-center break-all sm:break-words">
-                          <h2 className="text-lg font-bold">{recipe.title}</h2>
+                        <article className="w-full m-1 text-center break-keep">
+                          <h2 className="font-bold break-words">
+                            <b>{recipe.title}</b>
+                          </h2>
                           <p>Tipo: {recipe.type}</p>
                         </article>
                       </article>
                       <article className="size-full flex flex-col justify-around p-2 overflow-auto">
-                        <section>
-                          <p className="font-bold">Ingredienti:</p>
+                        <section className="m-1">
+                          <p className={cn('font-bold', recipe.sectionsColor)}>
+                            <b>Ingredienti:</b>
+                          </p>
                           <p>{recipe.ingredients}</p>
                         </section>
-                        <section>
-                          <p className="font-bold">Procedimento:</p>
+                        <section className="m-1">
+                          <p className={cn('font-bold', recipe.sectionsColor)}>
+                            <b>Procedimento:</b>
+                          </p>
                           <p>{recipe.process}</p>
                         </section>
                       </article>
@@ -187,7 +193,7 @@ const MyRecipes = () => {
                 <article>
                   <section className="flex justify-end">
                     <Button
-                      className="!w-auto !max-w-auto !min-auto !bg-white !p-0 !sm:w-auto !sm:max-w-auto !sm:min-auto"
+                      className="justify-content-end m-2 !p-0 !bg-white !min-w-fit !w-fit !max-w-fit !min-h-fit !h-fit !max-h-fit"
                       iconName="close"
                       onClick={() => handleIsOpen(false)}
                     />
@@ -195,13 +201,13 @@ const MyRecipes = () => {
                   <p>
                     Sei sicuro di voler eliminare <b className="text-red-100">{recipe?.title}</b>?
                   </p>
-                  <section className="w-full flex justify-around p-2.5 place-items-center">
+                  <section className="size-full p-2.5 grid grid-cols-1 gap-7 place-items-center sm:grid-cols-2">
                     <Button
                       type="reset"
                       text="Annulla"
                       title="Annulla"
                       textColor="text-black"
-                      className="!w-auto"
+                      className="!w-full !sm:w-auto"
                       backgroundColor="bg-gray-300 hover:bg-gray-200 hover:text-gray-100"
                       iconName="reset"
                       textSize="text-xs"
@@ -211,7 +217,7 @@ const MyRecipes = () => {
                       text="Conferma"
                       title="Conferma"
                       iconColor="white"
-                      className="!w-auto"
+                      className="!w-full !sm:w-auto"
                       backgroundColor="bg-yellow-200 hover:bg-yellow-50"
                       iconName="rightArrow"
                       onClick={() => recipe?.id && handleDeleteRecipe(recipe.id)}

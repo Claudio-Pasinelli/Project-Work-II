@@ -1,95 +1,70 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": "c904",
       "name": "Claudio Pasinelli",
-      "email": "claudio.pasinelli@nurale.it",
-      "password": "123456"
+      "email": "claudiopasinelli@gmail.com",
+      "password": "123456",
+      "createdAt": "2024-05-28T08:39:21.018Z",
+      "updatedAt": "2024-05-28T08:39:21.018Z"
     },
     {
-      "id": "ad0f",
-      "name": "Francesco Rossi",
-      "email": "francescorossi@gmail.com",
-      "password": "francesco"
+      "id": "21cc",
+      "name": "Giulia Masnari",
+      "email": "giuliamasnari@gmail.com",
+      "password": "123456",
+      "createdAt": "2024-05-28T08:45:34.035Z",
+      "updatedAt": "2024-05-28T08:45:34.035Z"
     },
     {
-      "id": "7971",
-      "name": "Tester1",
-      "email": "tester1@gmail.com",
-      "password": "admin"
+      "id": "bcaa",
+      "name": "Giorgio Rossi",
+      "email": "giorgiorossi@gmail.com",
+      "password": "123456",
+      "createdAt": "2024-05-28T09:03:57.007Z",
+      "updatedAt": "2024-05-28T09:03:57.007Z"
     }
   ],
   "recipes": [
     {
-      "id": "8380",
-      "idUser": "1",
-      "title": "Claudio Pasinelli 1",
-      "ingredients": "Claudio Pasinelli 1",
-      "process": "Claudio Pasinelli 1",
-      "type": "Antipasti",
-      "bgColor": "bg-orange"
-    },
-    {
-      "id": "2795",
-      "idUser": "1",
-      "title": "Claudio Pasinelli 2",
-      "ingredients": "Claudio Pasinelli 2",
-      "process": "Claudio Pasinelli 2",
-      "type": "Primi",
-      "bgColor": "bg-lightblue"
-    },
-    {
-      "id": "bf52",
-      "idUser": "ad0f",
-      "title": "Francesco Rossi 1",
-      "ingredients": "Francesco Rossi 1",
-      "process": "Francesco Rossi 1",
-      "type": "Secondi",
-      "bgColor": "bg-pink"
-    },
-    {
-      "id": "76ba",
-      "idUser": "ad0f",
-      "title": "Francesco Rossi 2",
-      "ingredients": "Francesco Rossi 2",
-      "process": "Francesco Rossi 2",
-      "type": "Contorni",
-      "bgColor": "bg-amber"
-    },
-    {
-      "idUser": "7971",
-      "title": "Tester 1 Test 1",
-      "ingredients": "Tester 1 Test 1",
-      "process": "Tester 1 Test 1",
-      "type": "Bevande",
-      "bgColor": "bg-indigo",
-      "id": "adfc"
-    },
-    {
-      "idUser": "7971",
-      "title": "Tester 1 Test 2",
-      "ingredients": "Tester 1 Test 2",
-      "process": "Tester 1 Test 2",
-      "type": "Dolci",
+      "id": "689d",
+      "idUser": "c904",
+      "title": "TORTA ALL'ANANAS",
+      "ingredients": " 270 g di farina 00\n 16 g di lievito per dolci\n 125 ml di yogurt all'ananas\n 90 g di olio di semi\n 40 g di latte\n 3 uova\n200 g di ananas (fresco o sciroppato)",
+      "process": "La preparazione della torta all'ananas è piuttosto veloce: in una ciotola capiente rompiamo le uova e montiamole con lo zucchero [1].\nQuando il composto è diventato cremoso e chiaro, sempre mescolando, versiamo a filo il latte [2]\n",
+      "type": "Dolce",
       "bgColor": "bg-yellow-200",
-      "id": "4360"
+      "sectionsColor": "text-yellow-300"
     },
     {
-      "id": "6cb6",
-      "idUser": "1",
-      "title": "Test Antipasti",
-      "ingredients": "Test Antipasti",
-      "process": "Test Antipasti",
-      "type": "Antipasti",
-      "bgColor": "bg-orange"
+      "id": "8841",
+      "idUser": "21cc",
+      "title": "3 ACQUE AROMATIZZATE PER L'ESTATE",
+      "ingredients": "PER L'ACQUA AROMATIZZATA ALL'ANANAS 1 l di acqua\n 3-4 fette d'ananas fresco 2 rametti di menta PER L'ACQUA AROMATIZZATA ALL'ANGURIA  1 l di acqua  1 fetta di anguria q.b. foglioline di menta PER L'ACQUA AROMATIZZATA AL CETRIOLO E LIMONE  1 l di acqua  1 cetriolo 1 limone  q.b. foglioline di menta",
+      "process": "Per preparare l'acqua aromatizzata all'ananas, per prima cosa puliamo e affettiamo un ananas fresco: ci serviranno 3-4 fette a seconda se preferiamo un sapore più intenso o meno.\nDopodiché tagliamo le fette a cubetti e inseriamole in contenitore di vetro insieme a un litro di acqua e a qualche fogliolina di menta fresca.\nNon è necessario aggiungere zucchero, in quanto questo frutto è già di per sè piuttosto dolce e in questo modo la bevanda resta leggera.\n\nDiamo una mescolata, chiudiamo e mettiamo in frigorifero per una notte (o almeno dalle 2 alle 8 ore) e consumiamo il giorno dopo in qualsiasi momento della giornata per idratarci e rinfrescarci.",
+      "type": "Bevanda",
+      "bgColor": "bg-indigo-50",
+      "sectionsColor": "text-indigo-100"
+    },
+    {
+      "id": "13a0",
+      "idUser": "bcaa",
+      "title": "TROPICAL CHICKEN SALAD",
+      "ingredients": " 1 peperone rosso\n1 mango\n1 avocado\n1 carota\nq.b. insalata iceberg\n2 fette di pane raffermo\n q.b. pomodori piccadilly\n 1 petto di pollo\n q.b. ananas a cubetti\n1/2 peperoncino\nq.b. capperi dissalati\n1 acciuga\n q.b. sale e pepe",
+      "process": "Iniziamo a tagliare il petto di pollo in due nel senso della lunghezza, dopodichè lo puliamo da ossicini e nervature.\nAvvolgiamo in pellicola trasparente i petti torniti, in modo che risultino due salsicce [1], e li facciamo cuocere per 10/15 minuti in acqua [2].",
+      "type": "Vegano",
+      "bgColor": "bg-green-50",
+      "sectionsColor": "text-green-100"
     }
   ],
   "me": [
     {
-      "id": "1",
-      "name": "Claudio Pasinelli",
-      "email": "claudio.pasinelli@nurale.it",
-      "password": "123456"
+      "id": "bcaa",
+      "name": "Giorgio Rossi",
+      "email": "giorgiorossi@gmail.com",
+      "password": "123456",
+      "createdAt": "2024-05-28T09:03:57.007Z",
+      "updatedAt": "2024-05-28T09:03:57.007Z"
     }
   ]
 }

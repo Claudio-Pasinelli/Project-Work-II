@@ -53,7 +53,7 @@ const Dropdown = ({
                 id={name}
                 value={inputValue}
                 className={cn(
-                  'w-full p-2 bg-gray-50 text-center cursor-pointer outline-none md:p-[0.938rem]',
+                  'w-full p-2 bg-gray-50 text-center cursor-pointer outline-none',
                   open ? 'rounded-t-[1.563rem]' : 'rounded-[1.563rem]',
                 )}
                 placeholder={placeholder}

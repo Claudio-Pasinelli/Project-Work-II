@@ -64,11 +64,11 @@ const AvatarNavBar = () => {
           )}>
           {isLoggedIn && meName && location.pathname !== ROUTES.settings && (
             <>
-              <section className="w-full flex justify-between items-center">
+              <section className="w-full flex justify-between items-center hover:bg-gray-100">
                 <Button
                   iconName="settings"
                   className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
-                  backgroundColor="bg-white"
+                  backgroundColor="h-fit bg-white !p-0"
                   iconClassName="m-0"
                   onClick={() => {
                     navigate(ROUTES.settings);
@@ -88,11 +88,11 @@ const AvatarNavBar = () => {
             </>
           )}
           {isLoggedIn ? (
-            <section className="w-full flex justify-between items-center pb-1">
+            <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100">
               <Button
                 iconName="logout"
                 className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
-                backgroundColor="bg-white"
+                backgroundColor="h-fit bg-white !p-0"
                 iconClassName="m-0"
                 onClick={() => {
                   navigate(ROUTES.login);
@@ -109,11 +109,11 @@ const AvatarNavBar = () => {
               </p>
             </section>
           ) : (
-            <section className="w-full flex justify-between items-center pb-1">
+            <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100">
               <Button
                 iconName="login"
                 className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
-                backgroundColor="bg-white"
+                backgroundColor="h-fit bg-white !p-0"
                 iconClassName="m-0"
                 onClick={() => {
                   navigate(ROUTES.login);
@@ -121,7 +121,7 @@ const AvatarNavBar = () => {
                 }}
               />
               <p
-                className="text-green cursor-pointer"
+                className="text-green-50 cursor-pointer"
                 onClick={() => {
                   navigate(ROUTES.login);
                   setOpen(false);

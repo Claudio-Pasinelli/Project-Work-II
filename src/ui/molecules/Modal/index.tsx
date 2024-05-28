@@ -27,7 +27,7 @@ const Modal = ({ children, isOpen, handleIsOpen }: Props) => {
         className="w-full h-full bg-gray-500 bg-opacity-50 flex items-center justify-center"
         onClick={handleCloseModal}>
         <div
-          className="w-96 h-44 bg-white border border-gray-200 rounded-[1.563rem] shadow-xl"
+          className="w-96 h-fit bg-white border border-gray-200 rounded-[1.563rem] shadow-xl sm:h-44"
           onClick={(e) => e.stopPropagation()}>
           {children}
         </div>

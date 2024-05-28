@@ -52,22 +52,40 @@ const Form = () => {
       process: getValues('process'),
       type: type,
       bgColor:
-        type === 'Antipasti'
-          ? 'bg-orange'
-          : type === 'Primi'
-            ? 'bg-lightblue'
-            : type === 'Secondi'
-              ? 'bg-pink'
-              : type === 'Contorni'
-                ? 'bg-amber'
-                : type === 'Bevande'
-                  ? 'bg-indigo'
-                  : type === 'Dolci'
+        type === 'Antipasto'
+          ? 'bg-orange-50'
+          : type === 'Primo'
+            ? 'bg-lightblue-50'
+            : type === 'Secondo'
+              ? 'bg-pink-50'
+              : type === 'Contorno'
+                ? 'bg-amber-50'
+                : type === 'Bevanda'
+                  ? 'bg-indigo-50'
+                  : type === 'Dolce'
                     ? 'bg-yellow-200'
-                    : type === 'Vegani'
-                      ? 'bg-green'
-                      : type === 'Speciali'
+                    : type === 'Vegano'
+                      ? 'bg-green-50'
+                      : type === 'Speciale'
                         ? 'bg-red-100'
+                        : '',
+      sectionsColor:
+        type === 'Antipasto'
+          ? 'text-orange-100'
+          : type === 'Primo'
+            ? 'text-lightblue-100'
+            : type === 'Secondo'
+              ? 'text-pink-100'
+              : type === 'Contorno'
+                ? 'text-amber-100'
+                : type === 'Bevanda'
+                  ? 'text-indigo-100'
+                  : type === 'Dolce'
+                    ? 'text-yellow-300'
+                    : type === 'Vegano'
+                      ? 'text-green-100'
+                      : type === 'Speciale'
+                        ? 'text-red-200'
                         : '',
     };
 
@@ -128,7 +146,7 @@ const Form = () => {
               )}>
               {userData ? <Avatar userData={userData} isMe={true} /> : null}
               <Input
-                label="Nome Ricetta"
+                label="Nome Ricetta:"
                 labelColor="text-white"
                 name="title"
                 type="text"
@@ -137,16 +155,15 @@ const Form = () => {
               />
             </article>
             <section className="flex-grow p-2.5 overflow-auto">
-              <Input
-                label="Lista ingredienti"
+              <Textarea
+                label="Lista ingredienti:"
                 labelColor="text-black"
                 name="ingredients"
-                type="text"
                 placeholder="Inserisci gli ingredienti"
                 error={errors?.ingredients?.message}
               />
               <Textarea
-                label="Scrivi il procedimento"
+                label="Scrivi il procedimento:"
                 labelColor="text-black"
                 name="process"
                 placeholder="Scrivi il procedimento di preparazione"

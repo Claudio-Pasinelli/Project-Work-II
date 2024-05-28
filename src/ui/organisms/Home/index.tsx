@@ -79,35 +79,27 @@ const Home = () => {
   }
 
   return (
-    <article className="w-full h-fit flex justify-center items-center m-0 p-8 sm:py-16 sm:px-11">
-      <section className="w-full flex">
+    <article className="w-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
+      <section className="w-full flex flex-col sm:flex-row">
         <section className="w-full">
-          <section className="w-full flex justify-end">
+          <section className="w-full flex justify-end mb-4">
             <SearchInput name="search" onChange={handleChangeSearch} />
           </section>
           <h1 className="text-4xl text-center mb-4 sm:mb-9">Consigliati del giorno</h1>
           {users.length > 0 && (
             <section
               className={cn(
-                'grid justify-items-center gap-x-24 gap-y-12 w-full',
-                filteredRecipesData.length === 1
-                  ? 'grid-cols-1 sm:grid-cols-1'
-                  : filteredRecipesData.length === 2
-                    ? 'grid-cols-1 sm:grid-cols-2'
-                    : filteredRecipesData.length === 3
-                      ? 'grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-                      : filteredRecipesData.length >= 4
-                        ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-                        : null,
+                'grid gap-8 justify-items-center w-full',
+                'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
               )}>
               {filteredRecipesData.length !== 0 ? (
                 filteredRecipesData.map((recipe, index) => {
                   const userForRecipe = users.find((user) => user.id === recipe.idUser);
                   return (
                     <article
-                      className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64 sm:break-words"
+                      className="w-64 h-[26.25rem] break-all transform transition duration-300 hover:-translate-y-1 max-w-xs"
                       key={recipe.title + index}>
-                      <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
+                      <article className="w-full h-full flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
                         <article
                           className={cn(
                             'flex flex-col justify-between p-2 border-b border-gray-200 items-center rounded-t-3xl shadow-xl',
@@ -121,18 +113,18 @@ const Home = () => {
                               />
                             ) : null}
                           </section>
-                          <article className="text-center break-all sm:break-words">
-                            <h2 className="text-lg font-bold">{recipe.title}</h2>
+                          <article className="w-full m-1 text-center break-keep">
+                            <h2 className="font-bold break-words">{recipe.title}</h2>
                             <p>Tipo: {recipe.type}</p>
                           </article>
                         </article>
                         <article className="size-full flex flex-col justify-around p-2 overflow-auto">
-                          <section>
-                            <p className="font-bold">Ingredienti:</p>
+                          <section className="m-1">
+                            <p className={cn('font-bold', recipe.sectionsColor)}>Ingredienti:</p>
                             <p>{recipe.ingredients}</p>
                           </section>
-                          <section>
-                            <p className="font-bold">Procedimento:</p>
+                          <section className="m-1">
+                            <p className={cn('font-bold', recipe.sectionsColor)}>Procedimento:</p>
                             <p>{recipe.process}</p>
                           </section>
                         </article>

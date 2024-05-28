@@ -5,16 +5,8 @@ export interface User {
   password: string;
   confirmPassword?: string;
   recipes: Recipe[];
-  // passwordConfirm?: string;
-  // firstName: string;
-  // lastName: string;
-  // phone?: string;
-  // resourceId: number;
-  // id?: number;
-  // createdAt?: Date;
-  // role?: string;
-  // uid?: string;
-  // updatedAt?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface Message {
@@ -29,25 +21,6 @@ export interface Recipe {
   ingredients: string;
   process: string;
   bgColor?: string;
+  sectionsColor?: string;
   type: string;
 }
-
-export type IErrorFullContacts = {
-  email: string | null;
-  message: string | null;
-};
-
-export type IError = {
-  name: string | null;
-  email: string | null;
-  message: string | null;
-  termsOfService: string | null;
-};
-
-// export type ReturnContacts = TypedResponse<{
-//   success: boolean;
-//   errorsContacts?: IErrorFullContacts;
-//   errors?: IError;
-//   resendError?: ErrorResponse;
-//   data?: unknown;
-// }>;

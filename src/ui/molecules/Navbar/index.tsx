@@ -55,7 +55,7 @@ const Navbar = () => {
         <img
           src="logo.png"
           alt="Logo Ricette della Nonna"
-          className="w-48 h-auto my-auto transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1"
+          className="w-48 h-auto my-auto transform transition duration-300 hover:-translate-y-1"
         />
 
         <h1 className="text-white font-bold">{pageName}</h1>
@@ -63,36 +63,36 @@ const Navbar = () => {
       <section className="flex items-center">
         <div className="border-0 border-none flex flex-col items-start mr-8 pl-8 sm:border-l-2 sm:border-black-50">
           <section className="w-full flex justify-end items-center">
-            {location.pathname !== '/' && (
+            {location.pathname !== ROUTES.home && (
               <Link
-                to="/"
+                to={ROUTES.home}
                 className={cn(
                   'text-white',
-                  location.pathname === '/'
+                  location.pathname === ROUTES.home
                     ? 'bg-black-50 p-2 rounded-2xl'
                     : 'bg-none p-0 rounded-none',
                 )}>
                 Home
               </Link>
             )}
-            {location.pathname !== '/contacts' && (
+            {location.pathname !== ROUTES.contacts && (
               <Link
-                to="/contacts"
+                to={ROUTES.contacts}
                 className={cn(
                   'text-white ml-4',
-                  location.pathname === '/contact-us'
+                  location.pathname === ROUTES.contacts
                     ? 'bg-black-50 p-2 rounded-2xl'
                     : 'bg-none p-0 rounded-none',
                 )}>
                 Contattami
               </Link>
             )}
-            {isUserRegistered && location.pathname !== '/my-recipes' && (
+            {isUserRegistered && location.pathname !== ROUTES.myRecipes && (
               <Link
-                to="/my-recipes"
+                to={ROUTES.myRecipes}
                 className={cn(
                   'text-white ml-4',
-                  location.pathname === '/my-recipes'
+                  location.pathname === ROUTES.myRecipes
                     ? 'bg-black-50 p-2 rounded-2xl'
                     : 'bg-none p-0 rounded-none',
                 )}>

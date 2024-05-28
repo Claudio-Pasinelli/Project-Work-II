@@ -1,13 +1,12 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button, DropdownFilter, Loader, SearchInput } from '../../atoms';
-import { ROUTES, RECIPES_TYPES, Recipe, User } from '../../../utils';
+import { DropdownFilter, Loader, SearchInput } from '../../atoms';
+import { RECIPES_TYPES, Recipe, User } from '../../../utils';
 import { Avatar } from '../../molecules';
 import { cn } from '../../../utils/helpers/tailwindMerge';
 
 const OtherUser = () => {
-  const navigate = useNavigate();
   const [userData, setUserData] = useState<User | null>(null);
   const [recipesData, setRecipesData] = useState<Recipe[]>([]);
   const [filteredRecipesData, setFilteredRecipesData] = useState<Recipe[]>([]);
@@ -63,7 +62,7 @@ const OtherUser = () => {
   }
 
   return (
-    <article className="w-full h-fit flex justify-center items-center m-0 p-8 sm:py-16 sm:px-11">
+    <article className="w-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
       <section className="w-full flex">
         <section className="w-full">
           <section className="w-full flex justify-end">
@@ -87,7 +86,7 @@ const OtherUser = () => {
               {filteredRecipesData.length !== 0 ? (
                 filteredRecipesData.map((recipe, index) => (
                   <article
-                    className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:scale-[1.01] hover:-translate-y-1 sm:w-64 sm:break-words"
+                    className="max-w-64 min-w-52 h-full break-all transform transition duration-300 hover:-translate-y-1 sm:w-64 sm:break-words"
                     key={recipe.title + index}>
                     <article className="w-full h-full min-h-[26.25rem] max-h-[26.25rem] flex flex-col text-left bg-gray-50 border border-gray-200 rounded-t-3xl rounded-bl-3xl shadow-xl overflow-hidden">
                       <article
@@ -98,18 +97,20 @@ const OtherUser = () => {
                         <section className="w-full flex place-content-between">
                           <Avatar userData={userData} isMe={false} />
                         </section>
-                        <article className="text-center break-all sm:break-words">
-                          <h2 className="text-lg font-bold">{recipe.title}</h2>
+                        <article className="w-full m-1 text-center break-keep">
+                          <h2 className="font-bold break-words">
+                            <b>{recipe.title}</b>
+                          </h2>
                           <p>Tipo: {recipe.type}</p>
                         </article>
                       </article>
                       <article className="size-full flex flex-col justify-around p-2 overflow-auto">
-                        <section>
-                          <p className="font-bold">Ingredienti:</p>
+                        <section className="m-1">
+                          <p className={cn('font-bold', recipe.sectionsColor)}>Ingredienti:</p>
                           <p>{recipe.ingredients}</p>
                         </section>
-                        <section>
-                          <p className="font-bold">Procedimento:</p>
+                        <section className="m-1">
+                          <p className={cn('font-bold', recipe.sectionsColor)}>Procedimento:</p>
                           <p>{recipe.process}</p>
                         </section>
                       </article>

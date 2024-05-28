@@ -22,34 +22,34 @@ export interface RecipesTypes {
 export const RECIPES_TYPES: Array<RecipesTypes> = [
   {
     id: 1,
-    value: 'Antipasti',
+    value: 'Antipasto',
   },
   {
     id: 2,
-    value: 'Primi',
+    value: 'Primo',
   },
   {
     id: 3,
-    value: 'Secondi',
+    value: 'Secondo',
   },
   {
     id: 4,
-    value: 'Contorni',
+    value: 'Contorno',
   },
   {
     id: 5,
-    value: 'Bevande',
+    value: 'Bevanda',
   },
   {
     id: 6,
-    value: 'Dolci',
+    value: 'Dolce',
   },
   {
     id: 7,
-    value: 'Vegani',
+    value: 'Vegano',
   },
   {
     id: 8,
-    value: 'Speciali',
+    value: 'Speciale',
   },
 ];

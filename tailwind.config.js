@@ -38,18 +38,38 @@ module.exports = {
       red: {
         50: '#fca5a5',
         100: '#FF2323',
+        200: '#D90000', // nuovo
       },
       yellow: {
         50: '#FFE500',
         100:'#fde047',
         200: '#FFD700',
+        300: '#BFAD00', // nuovo
       },
-      orange: '#FFB800',
-      lightblue: '#3ADBFF',
-      pink: '#ffc6f4',
-      amber: '#ffc3a3',
-      indigo: '#a5b4fc',
-      green: '#86efac',
+      orange: {
+        50:'#FFB800',
+        100:'#DAAA00',
+      },
+      lightblue: {
+        50:'#3ADBFF',
+        100:'#24B8E6',
+      },
+      pink: {
+        50:'#ffc6f4',
+        100:'#e6a0d9',
+      },
+      amber: {
+        50:'#ffc3a3',
+        100:'#e69868',
+      },
+      indigo: {
+        50:'#a5b4fc',
+        100:'#8c9be8',
+      },
+      green: {
+        50:'#86efac',
+        100:'#6ac97a',
+      },
     },
     extend: {},
   },

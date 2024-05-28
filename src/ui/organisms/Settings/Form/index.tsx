@@ -47,7 +47,7 @@ const Form = () => {
       await axios.put(`http://localhost:4000/me/${userData.id}`, updatedUserData);
       await axios.put(`http://localhost:4000/users/${userData.id}`, updatedUserData);
 
-      navigate(ROUTES.home);
+      navigate(0);
     } catch (error) {
       console.error(error);
     } finally {
@@ -86,7 +86,7 @@ const Form = () => {
   return (
     <FormProvider {...methods}>
       <section className="w-[33.75rem] h-full flex flex-col place-items-center rounded-3xl bg-yellow-200 sm:rounded-3xl">
-        <h1 className="w-full h-fit bg-orange text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-t-3xl">
+        <h1 className="w-full h-fit bg-orange-50 text-4xl text-center text-white content-center rounded-t-3xl shadow-xl sm:rounded-t-3xl">
           IMPOSTAZIONI PROFILO
         </h1>
         <article className="w-3/4 flex flex-col my-5 p-4 text-left bg-gray-50 rounded-3xl shadow-xl sm:m-7 sm:w-fit sm:p-8">
