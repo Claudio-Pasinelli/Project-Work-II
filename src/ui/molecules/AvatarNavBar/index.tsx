@@ -67,6 +67,7 @@ const AvatarNavBar = () => {
               <section className="w-full flex justify-between items-center hover:bg-gray-100 rounded-full">
                 <Button
                   iconName="settings"
+                  title="Impostazioni"
                   className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
                   backgroundColor="h-fit bg-white !p-0"
                   iconClassName="m-0"
@@ -76,6 +77,7 @@ const AvatarNavBar = () => {
                   }}
                 />
                 <p
+                  title="Impostazioni"
                   className="cursor-pointer"
                   onClick={() => {
                     navigate(ROUTES.settings);
@@ -91,6 +93,7 @@ const AvatarNavBar = () => {
             <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100 rounded-full">
               <Button
                 iconName="logout"
+                title="Esci"
                 className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
                 backgroundColor="h-fit bg-white !p-0"
                 iconClassName="m-0"
@@ -100,6 +103,7 @@ const AvatarNavBar = () => {
                 }}
               />
               <p
+                title="Esci"
                 className="text-red-100 cursor-pointer"
                 onClick={() => {
                   navigate(ROUTES.login);
@@ -112,6 +116,7 @@ const AvatarNavBar = () => {
             <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100 rounded-full">
               <Button
                 iconName="login"
+                title="Accedi"
                 className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
                 backgroundColor="h-fit bg-white !p-0"
                 iconClassName="m-0"
@@ -121,6 +126,7 @@ const AvatarNavBar = () => {
                 }}
               />
               <p
+                title="Accedi"
                 className="text-green-50 cursor-pointer"
                 onClick={() => {
                   navigate(ROUTES.login);

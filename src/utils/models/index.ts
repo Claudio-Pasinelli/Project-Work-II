@@ -24,3 +24,8 @@ export interface Recipe {
   sectionsColor?: string;
   type: string;
 }
+
+export interface RecipesTypes {
+  value: string;
+  id: number;
+}

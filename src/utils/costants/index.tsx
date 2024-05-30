@@ -1,3 +1,6 @@
+import { RecipesTypes, User } from '../models';
+import axios from 'axios';
+
 export const ROUTES = {
   home: '/',
   signIn: '/sign-in',
@@ -11,13 +14,6 @@ export const ROUTES = {
   myRecipesForm: '/my-recipes/new',
   users: '/users:id',
 };
-
-export const RESEND_API_KEY = 're_gRG23fRs_MUEnyJ7s2rwJ6V5pAWnU3pqH';
-
-export interface RecipesTypes {
-  value: string;
-  id: number;
-}
 
 export const RECIPES_TYPES: Array<RecipesTypes> = [
   {
@@ -53,3 +49,19 @@ export const RECIPES_TYPES: Array<RecipesTypes> = [
     value: 'Speciale',
   },
 ];
+
+export const handleLogout = async () => {
+  try {
+    const res = await axios.get('http://localhost:4000/me');
+    const meDataArray: User[] = res.data;
+
+    if (meDataArray.length > 0) {
+      for (const meData of meDataArray) {
+        await axios.delete(`http://localhost:4000/me/${meData.id}`);
+      }
+      console.log('Tutti gli elementi in "me" sono stati eliminati');
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};

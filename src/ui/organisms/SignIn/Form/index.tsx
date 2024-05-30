@@ -2,7 +2,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Input, A, InputPassword } from '../../../atoms';
 import schema from '../validation';
-import { ROUTES, User } from '../../../../utils';
+import { ROUTES, User, handleLogout } from '../../../../utils';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -71,22 +71,6 @@ const Form = () => {
 
   const handleReset = () => {
     reset(defaultValues);
-  };
-
-  const handleLogout = async () => {
-    try {
-      const res = await axios.get('http://localhost:4000/me');
-      const meDataArray: User[] = res.data;
-
-      if (meDataArray.length > 0) {
-        for (const meData of meDataArray) {
-          await axios.delete(`http://localhost:4000/me/${meData.id}`);
-        }
-        console.log('Tutti gli elementi in "me" sono stati eliminati');
-      }
-    } catch (err) {
-      console.error(err);
-    }
   };
 
   useEffect(() => {
