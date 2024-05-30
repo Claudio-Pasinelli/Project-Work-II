@@ -57,7 +57,12 @@ const Navbar = () => {
           <img
             src="logo.png"
             alt="Logo Ricette della Nonna"
-            className="w-48 h-auto my-auto transform transition duration-300 hover:-translate-y-1"
+            className={cn(
+              'w-48 h-auto my-auto',
+              location.pathname === ROUTES.home
+                ? ''
+                : 'transform transition duration-300 hover:-translate-y-1',
+            )}
           />
         </A>
 
