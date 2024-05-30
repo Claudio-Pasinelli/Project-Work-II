@@ -3,7 +3,7 @@ import { cn } from '../../../utils/helpers/tailwindMerge';
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   text?: string;
-  href: string;
+  href?: string;
   children?: ReactElement;
   icon?: boolean;
   className?: string;

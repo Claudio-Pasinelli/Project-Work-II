@@ -64,7 +64,7 @@ const AvatarNavBar = () => {
           )}>
           {isLoggedIn && meName && location.pathname !== ROUTES.settings && (
             <>
-              <section className="w-full flex justify-between items-center hover:bg-gray-100">
+              <section className="w-full flex justify-between items-center hover:bg-gray-100 rounded-full">
                 <Button
                   iconName="settings"
                   className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
@@ -88,7 +88,7 @@ const AvatarNavBar = () => {
             </>
           )}
           {isLoggedIn ? (
-            <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100">
+            <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100 rounded-full">
               <Button
                 iconName="logout"
                 className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
@@ -109,7 +109,7 @@ const AvatarNavBar = () => {
               </p>
             </section>
           ) : (
-            <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100">
+            <section className="w-full flex justify-between items-center pb-1 hover:bg-gray-100 rounded-full">
               <Button
                 iconName="login"
                 className="!w-fit !min-w-fit !max-w-fit sm:!w-fit sm:!min-w-fit sm:!max-w-fit"
