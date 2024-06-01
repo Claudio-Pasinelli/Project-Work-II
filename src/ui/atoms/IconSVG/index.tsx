@@ -6,6 +6,7 @@ import { IoEye, IoEyeOff } from 'react-icons/io5';
 
 import { cn } from '../../../utils/helpers/tailwindMerge';
 import {
+  Avatar,
   Close,
   Delete,
   Edit,
@@ -18,8 +19,7 @@ import {
   Settings,
 } from '../Icons';
 type ReactIconsName =
-  // | 'checked'
-  // | 'list'
+  | 'avatar'
   | 'reset'
   | 'rightArrow'
   | 'search'
@@ -62,10 +62,9 @@ const IconSvg = ({
   );
 
   const Icons = {
-    // checked: <MdCheck className={iconStyle} size={size} aria-hidden="true" />, // no(?)
-    // list: <BsList className={iconStyle} size={size} aria-hidden="true" />, // no(?)
-    dropDown: <HiOutlineChevronDown className={iconStyle} size={size} aria-hidden="true" />, // no(?)
-    dropUp: <HiOutlineChevronUp className={iconStyle} size={size} aria-hidden="true" />, // no(?)
+    avatar: <Avatar className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
+    dropDown: <HiOutlineChevronDown className={iconStyle} size={size} aria-hidden="true" />,
+    dropUp: <HiOutlineChevronUp className={iconStyle} size={size} aria-hidden="true" />,
     reset: <Reset className={iconStyle} color={iconColor} size={size} aria-hidden="true" />,
     rightArrow: (
       <RightArrow className={iconStyle} color={iconColor} size={size} aria-hidden="true" />

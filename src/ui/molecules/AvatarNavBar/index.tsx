@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useOnClickOutside } from '../../../utils/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../../utils';
-import { Button } from '../../atoms';
+import { Button, IconSVG } from '../../atoms';
 import { cn } from '../../../utils/helpers/tailwindMerge';
 import axios from 'axios';
 
@@ -33,7 +33,6 @@ const AvatarNavBar = () => {
         setIsLoggedIn(true);
         setMeName(meData.name);
       } else {
-        setUsername('NR');
         setIsLoggedIn(false);
         setMeName('Non Registrato');
       }
@@ -53,7 +52,7 @@ const AvatarNavBar = () => {
         onClick={() => setOpen(true)}
         // eslint-disable-next-line quotes
         title={isLoggedIn ? meName : "Non hai effettuato l'accesso"}>
-        <p>{username}</p>
+        {isLoggedIn ? <p>{username}</p> : <IconSVG name="avatar" size={24} />}
       </figure>
       {open && (
         <div

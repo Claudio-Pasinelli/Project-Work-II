@@ -71,16 +71,13 @@ const Form = () => {
     try {
       setLoading(true);
 
-      // Fetch the user's recipes
       const recipesRes = await axios.get(`http://localhost:4000/recipes?idUser=${userData?.id}`);
       const userRecipes = recipesRes.data;
 
-      // Delete each recipe
       for (const recipe of userRecipes) {
         await axios.delete(`http://localhost:4000/recipes/${recipe.id}`);
       }
 
-      // Delete the user data
       await axios.delete(`http://localhost:4000/me/${userData?.id}`);
       await axios.delete(`http://localhost:4000/users/${userData?.id}`);
 
