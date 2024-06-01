@@ -62,11 +62,11 @@ const OtherUser = () => {
   }
 
   return (
-    <article className="size-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-8 sm:py-16 sm:px-11">
+    <article className="size-full h-fit max-h-fit min-h-[42.662rem] flex justify-center items-baseline m-0 p-6 sm:py-12 sm:px-8">
       <section className="w-full flex flex-col-reverse items-center md:flex-row">
         <section className="w-full flex flex-col">
           <section className="w-full mb-4 flex flex-col items-center">
-            <h1 className="text-4xl text-center items-center mb-4 sm:mb-9">
+            <h1 className="text-4xl text-center items-center mb-4 sm:mb-6">
               Le ricette di {userData?.name}
             </h1>
             <SearchInput
@@ -132,7 +132,7 @@ const OtherUser = () => {
             )}
           </section>
         </section>
-        <aside className="w-auto sm:ml-4">
+        <aside className="w-auto mb-auto sm:ml-4">
           <DropdownFilter
             name="filter"
             options={[{ id: 0, value: 'Tutte' }, ...RECIPES_TYPES]}
