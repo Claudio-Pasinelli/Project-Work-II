@@ -138,11 +138,11 @@ const Home = () => {
                         </article>
                       </article>
                       <article className="size-full flex flex-col justify-around p-2 overflow-auto">
-                        <section className="m-1">
+                        <section className="m-1 break-keep">
                           <p className={cn('font-bold', recipe.sectionsColor)}>Ingredienti:</p>
                           <p>{recipe.ingredients}</p>
                         </section>
-                        <section className="m-1">
+                        <section className="m-1 break-keep">
                           <p className={cn('font-bold', recipe.sectionsColor)}>Procedimento:</p>
                           <p>{recipe.process}</p>
                         </section>
