@@ -4,10 +4,10 @@ import Form from './Form';
 const PasswordRecoveryConfirm = () => {
   const [currentImage, setCurrentImage] = useState<number>(0);
   const images: string[] = [
-    'images/pages/login/login1.jpg',
-    'images/pages/login/login2.jpg',
-    'images/pages/login/login3.jpg',
-    'images/pages/login/login4.jpg',
+    '../images/pages/login/login1.jpg',
+    '../images/pages/login/login2.jpg',
+    '../images/pages/login/login3.jpg',
+    '../images/pages/login/login4.jpg',
   ];
 
   useEffect(() => {
