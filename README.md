@@ -13,7 +13,7 @@ con questo verranno scaricate le dipendenze di progetto, potrebbero servire alcu
 ### 3) Avviare il server
 Per avviare il server json, utilizzare questo comando nel terminale:
 
-### npx json-server --watch db/db.json --port 4000
+### npm run server
 
 ### 4) Eseguire l'applicazione
 Per avviare l'applicazione in modalità development, utilizzare uno dei seguenti comandi nel terminale:
