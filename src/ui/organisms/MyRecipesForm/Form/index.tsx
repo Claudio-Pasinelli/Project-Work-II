@@ -113,7 +113,12 @@ const Form = () => {
   const fetchMe = async () => {
     try {
       const res = await axios.get('http://localhost:4000/me');
-      setUserData(res.data[0]);
+      const meData = res.data[0];
+      if (meData) {
+        setUserData(meData);
+        return reset(meData);
+      }
+      return navigate(ROUTES.home);
     } catch (error) {
       console.error('Errore nel recuperare i dati utente', error);
     }
