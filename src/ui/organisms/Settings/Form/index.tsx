@@ -127,7 +127,7 @@ const Form = () => {
                 text="Disiscriviti"
                 title="Disiscriviti"
                 textColor="text-white"
-                backgroundColor="bg-gray-100 hover:bg-red-600"
+                backgroundColor="bg-gray-100 hover:bg-red-600 shadow-xl"
                 iconName="delete"
                 className="mt-4 text-black"
                 onClick={handleUnsubscribe}

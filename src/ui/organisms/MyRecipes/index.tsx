@@ -104,13 +104,13 @@ const MyRecipes = () => {
       <section className="w-full flex flex-col-reverse items-center md:flex-row">
         <section className="w-full flex flex-col">
           <section className="w-full mb-4 flex flex-col items-center">
-            <h1 className="text-4xl text-center mb-4 sm:mb-9">Le mie ricette</h1>
+            <h1 className="text-4xl text-center mb-4">Le mie ricette</h1>
             <SearchInput
               name="search"
               onChange={handleChangeSearch}
               containerClassName="mx-4 mb-4"
             />
-            <section className="w-full flex justify-evenly items-center mb-4 sm:flex-row sm:mb-9">
+            <section className="w-full flex justify-evenly items-center mb-4 sm:flex-row">
               <DropdownFilter
                 name="filter"
                 options={[{ id: 0, value: 'Tutte' }, ...RECIPES_TYPES]}
